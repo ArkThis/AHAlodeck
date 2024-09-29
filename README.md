@@ -28,23 +28,27 @@ It is incredibly simple and feels very useful already in early prototype compone
 **Just imagine being able to "tag" (somekey=somevalue) any file and folder:  
 Right-Click-Edit-Metadata.**
 
+![Prototype Screenshot](res/pyQtThunar-rightclickedit-metadata.png)
+
 
 What I am suggesting is to use existing FOSS-licensed technologies designed for storing and managing modern (even big) data. And really letting go of files-in-folders with excel sheets and incompatible databases and embedded metadata to a data-design and handling, making use of proper Object Storage environment's capabilities.
 
-Simply, putting metadata with the data: Where it belongs.
-And draw relationships right with others of those same "Meta+Data Objects".
-And support (de)referencing any kind of "link" information.
+  * Simply, putting metadata with the data: Where it belongs.
+  * And draw relationships right with others of those same "Meta+Data Objects".
+  * And support (de)referencing any kind of "link" information.
 
-Even supporting torrent magnet URLs for options to have light-or-heavy Data Object manifestations.
+Even supporting torrent magnet-links for options like having light-or-heavy Data Object manifestations.
 On the fly. ;)
+
 
 
 ## More?
 
 Welcome.
+
 This is ongoing research-and-development.
 
-In fact, we're mainly using xattrs and plan to patch existing code to provide on-board features for working with seriously-used "xattrs" - and going Object Storage, Swift, Apache Iceberg, Sparql, Recoll, etc.
+In fact, we're mainly starting with using xattrs and plan to patch existing code to provide on-board features for working with seriously-used "xattrs" - and going Object Storage, Swift, Apache Iceberg, Sparql, Recoll, etc.
 
 
 
