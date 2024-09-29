@@ -10,6 +10,9 @@ Based on already existing FOSS components that we try to orchestrate to each oth
 
 **And simply make use of "name=value" tags in the filesystem (where filename and path are stored); and using that filesystem directly as database.**
 
+And it's as accessible and easy as "simply putting a letter in a filename/path"
+
+
 The following image is a screenshot of a prototype setup:
 It shows a 0-Byte "file" being tagged to contain references to "other Objects".
 And that 0-Byte file having a title itself: Fully performing as a database entry.
