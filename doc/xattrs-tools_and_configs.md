@@ -1,4 +1,6 @@
-# Samba
+# Tools
+
+## Samba
 
 Set the config option `ea support = yes` in your `smb.conf`.
 Quote from [Official Samba documentation](https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html#idm3356)
@@ -16,9 +18,12 @@ Default: ea support = yes
 ```
 
 
-# TAR
+## TAR
 
 `$ tar --xattrs my_backup.tar /data/with/xattrs/used`
+
+TAR has different options to deal with extended attributes.
+Interesting that the only example for excluding xattrs is to *not* include the user namespace.
 
 Quote from `man tar`:
 
@@ -50,8 +55,7 @@ Extended file attributes
 ```
 
 
-
-# Rsync
+## Rsync
 
 `$ rsync -X ...`
 
@@ -62,12 +66,15 @@ Quote from `man rsync`
 ```
 
 
-# ZFS
+
+# Fileystems
+
+## ZFS
 
 > Works out of the box.
 
 
-# EXT4
+## EXT4
 
 > Works out of the box.
 
