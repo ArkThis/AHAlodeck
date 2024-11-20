@@ -1,4 +1,4 @@
-# Extended (File) Attributes (EAs)
+# Exposing Extended (File) Attributes (EAs)
 
 Also known as:
 
@@ -20,6 +20,7 @@ Their tech-designs were envisioned before 2000, and are well-supported in basic 
 
 Using EAs allows to add metadata to annotate the actual file/folder objects on a data storage - without the need for additional database or spreadsheet applications for most needs. Using 0-Byte file objects, one can even create stand-in replacements for basic database functionalities like describing object relationships.
 
-
 EAs may play a crucial role in the adoption of reliable annotation on the filesystem level.
 
+
+Link to [Frequently Asked Questions (FAQs)](xattr_faq.md).
