@@ -63,3 +63,8 @@ If you have good answers to the questions asked in the following image, please l
 
 If your job is to care-or-know where which of what metadata goes with what "Object" where - and why: And where it is all stored and accessed digitally, you've come to the right place. This is what we're trying to finally make it fun again.
 
+
+# Frequently asked questions
+
+  * [FAQs regarding extended attributes on the filesystem (Linux/Mac/Win)](doc/xattr_faq.md)
+
