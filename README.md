@@ -2,6 +2,9 @@
 
 Welcome! :)
 
+  * [FAQs regarding extended attributes on the filesystem (Linux/Mac/Win)](doc/xattr_faq.md)
+  * More FAQs about Object Storage, Schema-evolution, etc. will follow.
+
 
 # A Holodeck by August.
 
@@ -23,6 +26,9 @@ And that 0-Byte file having a title itself: Fully performing as a database entry
 --------------------------------
 
 TL;DR:
+
+AHAlodeck is *not only* about re-introducing extended file attributes.
+It starts with using xattrs, and going towards a filesystem which graph-node capabilities and more.
 
 > If I'm correct, then I may introduce a change for anyone dealing with digital data, **comparable to going beyond 8.3 uppercase-only ASCII characters in a filename (1995), to Object Oriented programming and responsive design**: Using common, existing filesystem features. 😄️
 
@@ -64,7 +70,4 @@ If you have good answers to the questions asked in the following image, please l
 If your job is to care-or-know where which of what metadata goes with what "Object" where - and why: And where it is all stored and accessed digitally, you've come to the right place. This is what we're trying to finally make it fun again.
 
 
-# Frequently asked questions
-
-  * [FAQs regarding extended attributes on the filesystem (Linux/Mac/Win)](doc/xattr_faq.md)
 
