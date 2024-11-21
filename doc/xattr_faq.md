@@ -153,3 +153,14 @@ anything about "a file" (Data Object).  Then, seeing its security-attributes
 to handle XAs nicely.
 
 
+  * **Can I create an attribute-only copy of a file?**
+
+    Yes.
+    This "thin copy" is very useful for transferring or securing metadata stored as XAs.
+    The command on linux (and possibly MacOS too) is:
+
+    `cp --attributes-only --preserve=all "SOURCE" "TARGET"`
+
+    The result (`TARGET`) is a 0-Byte (no payload) copy of `SOURCE`, including
+    all supported filesystem attributes.
+
