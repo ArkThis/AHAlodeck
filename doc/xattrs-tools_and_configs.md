@@ -78,3 +78,9 @@ Quote from `man rsync`
 
 > Works out of the box.
 
+
+## Btrfs
+
+> Works out of the box.
+
+I've initialized a test partition with node size 64kB, to test how large data can be stored as xattrs.
