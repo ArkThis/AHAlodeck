@@ -171,3 +171,8 @@ And used for dead-serious security (SE-Linux, etc).
     The result (`TARGET`) is a 0-Byte (no payload) copy of `SOURCE`, including
     all supported filesystem attributes.
 
+  * **Enough already! You sold it! How do I do it in Python?**
+
+     Easy! Use ["python.os" built-in methods](https://docs.python.org/3/library/os.html#linux-extended-attributes) (on Linux), or Bob's [xattr](https://bob.ippoli.to/archives/2005/05/03/xattr-darwin-8-extended-filesystem-attributes-from-python/) - get it as [PyPI:xattr](https://pypistats.org/packages/xattr) for Linux+MacOS.  
+     See: [Python: which lib to use for handling xattrs?](https://github.com/ArkThis/AHAlodeck/discussions/15) for more details.
+
