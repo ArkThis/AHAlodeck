@@ -42,11 +42,29 @@ And used for dead-serious security (SE-Linux, etc).
 
   * **Will XAs get lost on their way?**
 
-    Depends. If you take care, probably not.  And if there are data-paths or
-    environments where xattrs are not expected-or-known to pass intact, one can
-    simply choose to do the same workaround we do today: make a plain text/binary
+    Depends. At the moment, they may be lost quite easily.
+    Simply because the application developers didn't consider them (important).
+    Yet, many core and popular GNU/FOSS commandline tools often give a
+    `--xattrs` switch to enable them.
+
+    So, if you take care, I'd say you'll be fine.
+    I'm using them, and I'm writing feature-requests on issue-trackers and forums, also providing work or funding to patch-in xattr support by default, if possible. That way, I've enabled xattr support in a handful of FOSS applications already, as their developers were happy and gracious enough to "make it work".
+
+    So for short: For the time being, I'd be cautious. Check your tools (especially when copying/saving files), if they honor `xattrs`- and also if they in any way alter keys or values (eg character encoding change).
+    And use `getfattr` to create a textfile-backup as sidecar metadata file.
+
+    You can use `setfattr` to translate that sidecar-dump back into attached `xattrs`, at any later time.
+
+  * **What if there are data-paths or environments where xattrs are not expected-or-known to pass intact?**
+
+    Like: Copying files over the network, or email, or messenger, etc - does
+    not honor your xattrs, and they are lost by the wayside.
+
+    This is actually something we do in computing/collections all the time. :)
+
+    One can simply choose to do the same workaround we do today: make a plain text/binary
     backup of those attributes (eg by tar-ing just the XAs).  And re-import once
-    the data has reached a target-FS which supports xattrs.
+    the data has reached a target-filesystem, which supports xattrs again.
 
     Caution must be paid to the total size of the key+value data - and the limits
     of the filesystems that data is intended to travel. For now I highly recommend
@@ -57,7 +75,6 @@ And used for dead-serious security (SE-Linux, etc).
     xattrs are treated as "plain Bytes" by the filesystems. Application /may/
     mis-interpret or change those attribute's encoding. However, this is quite
     unlikely.
-
 
   * **Why aren't XAs the standard, if they're so awesome?**  
 
