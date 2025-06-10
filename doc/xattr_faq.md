@@ -59,9 +59,9 @@
 
     However, I've so far developed and tested exclusively on Linux
     (Debian-based) systems - with great success.
- 
 
-  * **xattrs, EAs, XAs, resource forks, named resources: Eh? What now?**  
+
+  * **xattrs, EAs, XAs, resource forks, named resources: Eh? What now?**
 
     Yes and all of that.  I'll try to stick to "xattrs" and "XAs" for when I
 mean "extended file attributes in general".  I use "XA" as "I can store
@@ -70,7 +70,7 @@ etc...  I prefer using them term `xattr` (unless I'm too lazy to type, then
 `XA`).  Also because to give all Linux/POSIX developers credit for taking
 interoperability seriously. Respect and Thanks.
 
-  * **Are XAs reliable?**  
+  * **Are XAs reliable?**
 
     I'm pretty sure they are.
 
@@ -114,7 +114,7 @@ And used for dead-serious security (SE-Linux, etc).
     mis-interpret or change those attribute's encoding. However, this is quite
     unlikely.
 
-  * **Why aren't XAs the standard, if they're so awesome?**  
+  * **Why aren't XAs the standard, if they're so awesome?**
 
     Good question. I don't know.
 
@@ -132,7 +132,7 @@ And used for dead-serious security (SE-Linux, etc).
     It's what they were designed and built for.
 
 
-  * **Can I store all my meta/data in xattrs?**  
+  * **Can I store all my meta/data in xattrs?**
 
     No. Maybe. Depends.  On the actual filesystem/environments you're using.
 
@@ -158,7 +158,7 @@ And used for dead-serious security (SE-Linux, etc).
 
     Very probably: YES!  That's the beauty of XAs:
 
-  * **What about performance?**  
+  * **What about performance?**
 
     I'm comparing xattrs to the status quo of personal and professional
     metadata-handling and storage.  I'm **not worried** about performance (yet),
@@ -188,7 +188,7 @@ And used for dead-serious security (SE-Linux, etc).
     I think this speaks for good performance, compared to now? :)
 
 
-  * **What about (additional) data-size?**  
+  * **What about (additional) data-size?**
 
     As mentioned in "performance" above, the data is currently doubled: because
     of keeping the embedded originals for an expectedly long period from now.
@@ -228,14 +228,22 @@ And used for dead-serious security (SE-Linux, etc).
     trivial, I've made a post to ffmpeg-user about that idea.
 
 
-  * **They feel so obscure. Almost hidden. Feels odd and scary.**  
+  * **Xattrs feel so obscure. Almost hidden. Feels odd and scary.**
 
-    True. But not necessary.
+    True somehow. But not necessary.
+    XAs are actually a pretty nice/great/awesome feature.
 
     Imagine xattrs being the normal go-to thing you do when you want to know
     anything about "a file" (Data Object).  Then, seeing its security-attributes
     (like macOS quarantine/download-flags).  We're just not used (and lacking UIs)
     to handle XAs nicely.
+
+    For example, I've written a very simple proof-of-concept GUI called [MERCS](https://github.com/pjotrek-b/mercs/), which stands for: "Metadata Edit? Right-Click: Save."
+    Adding it as right-click menu action in your file-manager allows "checking and editing" your xattrs at any time.
+    Just literally: Right-click and edit your metadata.
+
+    Same for /any/ file-format.
+    XAs are available even on folders, btw ;)
 
 
   * **Can I create an attribute-only copy of a file?**
@@ -251,6 +259,6 @@ And used for dead-serious security (SE-Linux, etc).
 
   * **Enough already! You sold it! How do I do it in Python?**
 
-     Easy! Use ["python.os" built-in methods](https://docs.python.org/3/library/os.html#linux-extended-attributes) (on Linux), or Bob's [xattr](https://bob.ippoli.to/archives/2005/05/03/xattr-darwin-8-extended-filesystem-attributes-from-python/) - get it as [PyPI:xattr](https://pypistats.org/packages/xattr) for Linux+MacOS.  
+     Easy! Use ["python.os" built-in methods](https://docs.python.org/3/library/os.html#linux-extended-attributes) (on Linux), or Bob's [xattr](https://bob.ippoli.to/archives/2005/05/03/xattr-darwin-8-extended-filesystem-attributes-from-python/) - get it as [PyPI:xattr](https://pypistats.org/packages/xattr) for Linux+MacOS.
      See: [Python: which lib to use for handling xattrs?](https://github.com/ArkThis/AHAlodeck/discussions/15) for more details.
 
