@@ -174,24 +174,23 @@ but I haven't done hardcore testing with larger datasets yet.
 
 In a nutshell:
 
-# All music/photo tagging applications have some kind of database (like
-  sqlite)
-# So the metadata is stored twice: in the file (embedded) and "in" the
-  application's internal storage.
-# Another time (maybe), if one has a desktop-search indexer running.
-  Pointing to the same collections.
-# Larger collections have catalog and task-management systems to handle
-  data processing and access.
-# Converting applications to use the filesystem as go-to database/index
-  instead, will actually reduce storage/memory/process needs, compared to
-  now.
-# Most "larger" collections already require cache/indexer networks setup to
-  actually work with their data.
-# Using xattrs would be way lighter, as common functionalities could be
-  streamlined - by libraries and OS environments.
-# The overhead of "yet-another" parser for each file-format, just to access
-  its metadata: obsolete.
-# This means less code to load, run, maintain, download, consider, etc.
+  * All music/photo tagging applications have some kind of database (like sqlite)
+
+  * So the metadata is stored twice: in the file (embedded) and "in" the application's internal storage.
+
+  * Another time (maybe), if one has a desktop-search indexer running.  Pointing to the same collections.
+
+  * Larger collections have catalog and task-management systems to handle data processing and access.
+
+  * Converting applications to use the filesystem as go-to database/index instead, will actually reduce storage/memory/process needs, compared to now.
+
+  * Most "larger" collections already require cache/indexer networks setup to actually work with their data.
+
+  * Using xattrs would be way lighter, as common functionalities could be streamlined - by libraries and OS environments.
+
+  * The overhead of "yet-another" parser for each file-format, just to access its metadata: obsolete.
+
+  * This means less code to load, run, maintain, download, consider, etc.
 
 I think this speaks for good performance, compared to now? :)
 
