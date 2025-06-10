@@ -23,6 +23,44 @@
     So yes, let's use them. Professionally and personally.
     It even works on [Android (F2FS)](https://github.com/ArkThis/AHAlodeck/discussions/8).
 
+  * **Which filesystem(s) are we talking about?**
+
+    Who can do `xattrs`?
+
+    * Most Linux (POSIX compliant?) filesystems, and library implementations written after 2006 (or earliest ~1995).
+    * MacOS even includes proper xattr-support in their new filesystem APFS, and have them in HFS since back in the 90s, too.
+    * Windows can theoretically do something similar to `xattrs`, but most programming libraries for xattrs seem to support mostly/only Linux and MacOS.
+
+    Meaning:
+
+    * Linux: ext4, **ZFS**, btrfs, xfs, f2fs, orangeFS, etc...
+    * MacOS: HFS, APFS
+
+    So on Linux and MacOS, xattrs work pretty much out-of-the-box on their default filesystems.
+
+  * **Why did you highlight "ZFS" in the list of xattr-friendly filesystems?**
+
+    Thanks for noticing!
+    Indeed, my current favorite after testing and converting all kinds of
+    real-life metadata to `xattrs`, ZFS on Linux offers the largest address space
+    for attributes: 64kB per value (AFAIK).
+
+    And the features that ZFS provides as filesystem (snapshots, integrity
+    checking, data-pools, etc) are invaluable as underlying functionalities when
+    going towards modern computing storage "needs".
+
+    The MacOS filesystems are said to have unlimited `xattrs`, with spawning inodes if requiring more space.
+    I believe they work flawlessly on MacOS, and they seem to be used actively by the OS itself.
+    I'd love to use HFS/APFS on Linux for `xattrs`, but...
+
+    ...due to "compatibility and license" issues (I guess?), HFS/APFS support
+    on Linux seem like earlier NTFS-3g warnings about "read works, but be careful
+    when writing data...", which isn't something I would like to build stable stuff on.
+
+    However, I've so far developed and tested exclusively on Linux
+    (Debian-based) systems - with great success.
+ 
+
   * **xattrs, EAs, XAs, resource forks, named resources: Eh? What now?**  
 
     Yes and all of that.  I'll try to stick to "xattrs" and "XAs" for when I
