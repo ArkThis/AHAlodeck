@@ -23,6 +23,7 @@
     So yes, let's use them. Professionally and personally.
     It even works on [Android (F2FS)](https://github.com/ArkThis/AHAlodeck/discussions/8).
 
+
   * **Which filesystem(s) are we talking about?**
 
     Who can do `xattrs`?
@@ -37,6 +38,7 @@
     * MacOS: HFS, APFS
 
     So on Linux and MacOS, xattrs work pretty much out-of-the-box on their default filesystems.
+
 
   * **Why did you highlight "ZFS" in the list of xattr-friendly filesystems?**
 
@@ -70,6 +72,7 @@ etc...  I prefer using them term `xattr` (unless I'm too lazy to type, then
 `XA`).  Also because to give all Linux/POSIX developers credit for taking
 interoperability seriously. Respect and Thanks.
 
+
   * **Are XAs reliable?**
 
     I'm pretty sure they are.
@@ -77,6 +80,7 @@ interoperability seriously. Respect and Thanks.
     As long as you stay on the same filesystem/partition.  However: It's still
 an officially stable feature of many existing, mainstream and server systems.
 And used for dead-serious security (SE-Linux, etc).
+
 
   * **Will XAs get lost on their way?**
 
@@ -92,6 +96,7 @@ And used for dead-serious security (SE-Linux, etc).
     And use `getfattr` to create a textfile-backup as sidecar metadata file.
 
     You can use `setfattr` to translate that sidecar-dump back into attached `xattrs`, at any later time.
+
 
   * **What if there are data-paths or environments where xattrs are not expected-or-known to pass intact?**
 
@@ -113,6 +118,7 @@ And used for dead-serious security (SE-Linux, etc).
     xattrs are treated as "plain Bytes" by the filesystems. Application /may/
     mis-interpret or change those attribute's encoding. However, this is quite
     unlikely.
+
 
   * **Why aren't XAs the standard, if they're so awesome?**
 
@@ -154,9 +160,11 @@ And used for dead-serious security (SE-Linux, etc).
     For now, it's enough to keep all my music- and camera-tags as xattrs.
     Awesome to work with.
 
+
   * **Can I use XAs with "tools/OS" of my choice?**
 
     Very probably: YES!  That's the beauty of XAs:
+
 
   * **What about performance?**
 
@@ -239,11 +247,34 @@ And used for dead-serious security (SE-Linux, etc).
     to handle XAs nicely.
 
     For example, I've written a very simple proof-of-concept GUI called [MERCS](https://github.com/pjotrek-b/mercs/), which stands for: "Metadata Edit? Right-Click: Save."
-    Adding it as right-click menu action in your file-manager allows "checking and editing" your xattrs at any time.
-    Just literally: Right-click and edit your metadata.
 
-    Same for /any/ file-format.
-    XAs are available even on folders, btw ;)
+    ![Screenshot of MERCS added to Thunar's context-menu, showing MP3 de-embedded metadata](../res/pyQtThunar-rightclickedit-metadata.png)
+
+    Adding it as right-click menu action in your file-manager allows "checking and editing" your xattrs at any time.
+    Just literally: **Right-click and edit any metadata.**
+    Just like that.
+
+    Accessing and handling literally /any/ key-value structured metadata is now common, transparent and easily accessible.
+    And more interoperable than any embedded format.
+    Without requiring any special tools: plain file-manager / filesystem tools suffice and are quasi omnipresent by default.
+
+    Same for /any/ file-format, when using XAs.
+    btw: XAs are available even on folders.  ;)
+
+
+  * **Okay, let's talk code: how hard is it?**
+
+    To be honest, it's actually mind-blowingly simple.
+    Given that your environment offers you xattr-libraries/functions. Which most modern languages do (Python, Java, C, etc).
+
+    I'd teach handling xattrs in the first programming sessions I've give for
+    beginners when we get to "how to open/read a file in programming code?"
+
+    Because it's as simple and basic as just that:
+    You have a handle (path+filename, ID) to access your desired "filesystem object" (object storage) - or aka a "filename and path" on conventional filesystems: And then you simply read "yet another metadata", identical to reading the file's timestamps (create/modify/access). Valuable 1-0-1 skills.
+
+    Seriously, having and handling metadata has never been easier and more consistent.
+    From both, user and developer's sides.
 
 
   * **Can I create an attribute-only copy of a file?**
