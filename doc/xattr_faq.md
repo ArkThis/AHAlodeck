@@ -1,6 +1,6 @@
 # FAQs
 
-  * **xattrs, yeah... right: refresh my memory. What /is/ it you're talking about? Ex-what?**
+# xattrs, yeah... right: refresh my memory. What /is/ it you're talking about? Ex-what?
 
     Extended attributes, are key/value metadata information stored in the
     filesystem with your data (right with the data object. like the filename or
@@ -12,7 +12,7 @@
 
     Like all MP3/Movie/Image annotation- and technical-metadata, including
     hyperlinks, can be stored directly with the data.  Independent of the
-    file-format used inside the file object. **That is the beauty of `xattrs`.**
+    file-format used inside the file object. That is the beauty of `xattrs`.
 
     And this is not a hack: `xattrs` are [an open (POSIX)
     standard](https://lwn.net/Articles/868505/), and stable as in "this is the
@@ -24,23 +24,23 @@
     It even works on [Android (F2FS)](https://github.com/ArkThis/AHAlodeck/discussions/8).
 
 
-  * **Which filesystem(s) are we talking about?**
+# Which filesystem(s) are we talking about?
 
     Who can do `xattrs`?
 
-    * Most Linux (POSIX compliant?) filesystems, and library implementations written after 2006 (or earliest ~1995).
-    * MacOS even includes proper xattr-support in their new filesystem APFS, and have them in HFS since back in the 90s, too.
-    * Windows can theoretically do something similar to `xattrs`, but most programming libraries for xattrs seem to support mostly/only Linux and MacOS.
+  # Most Linux (POSIX compliant?) filesystems, and library implementations written after 2006 (or earliest ~1995).
+  # MacOS even includes proper xattr-support in their new filesystem APFS, and have them in HFS since back in the 90s, too.
+  # Windows can theoretically do something similar to `xattrs`, but most programming libraries for xattrs seem to support mostly/only Linux and MacOS.
 
     Meaning:
 
-    * Linux: ext4, **ZFS**, btrfs, xfs, f2fs, orangeFS, etc...
-    * MacOS: HFS, APFS
+  # Linux: ext4, ZFS, btrfs, xfs, f2fs, orangeFS, etc...
+  # MacOS: HFS, APFS
 
     So on Linux and MacOS, xattrs work pretty much out-of-the-box on their default filesystems.
 
 
-  * **Why did you highlight "ZFS" in the list of xattr-friendly filesystems?**
+# Why did you highlight "ZFS" in the list of xattr-friendly filesystems?
 
     Thanks for noticing!
     Indeed, my current favorite after testing and converting all kinds of
@@ -63,7 +63,7 @@
     (Debian-based) systems - with great success.
 
 
-  * **xattrs, EAs, XAs, resource forks, named resources: Eh? What now?**
+# xattrs, EAs, XAs, resource forks, named resources: Eh? What now?
 
     Yes and all of that.  I'll try to stick to "xattrs" and "XAs" for when I
 mean "extended file attributes in general".  I use "XA" as "I can store
@@ -73,7 +73,7 @@ etc...  I prefer using them term `xattr` (unless I'm too lazy to type, then
 interoperability seriously. Respect and Thanks.
 
 
-  * **Are XAs reliable?**
+# Are XAs reliable?
 
     I'm pretty sure they are.
 
@@ -82,7 +82,7 @@ an officially stable feature of many existing, mainstream and server systems.
 And used for dead-serious security (SE-Linux, etc).
 
 
-  * **Will XAs get lost on their way?**
+# Will XAs get lost on their way?
 
     Depends. At the moment, they may be lost quite easily.
     Simply because the application developers didn't consider them (important).
@@ -98,7 +98,7 @@ And used for dead-serious security (SE-Linux, etc).
     You can use `setfattr` to translate that sidecar-dump back into attached `xattrs`, at any later time.
 
 
-  * **What if there are data-paths or environments where xattrs are not expected-or-known to pass intact?**
+# What if there are data-paths or environments where xattrs are not expected-or-known to pass intact?
 
     Like: Copying files over the network, or email, or messenger, etc - does
     not honor your xattrs, and they are lost by the wayside.
@@ -120,7 +120,7 @@ And used for dead-serious security (SE-Linux, etc).
     unlikely.
 
 
-  * **Why aren't XAs the standard, if they're so awesome?**
+# Why aren't XAs the standard, if they're so awesome?
 
     Good question. I don't know.
 
@@ -138,7 +138,7 @@ And used for dead-serious security (SE-Linux, etc).
     It's what they were designed and built for.
 
 
-  * **Can I store all my meta/data in xattrs?**
+# Can I store all my meta/data in xattrs?
 
     No. Maybe. Depends.  On the actual filesystem/environments you're using.
 
@@ -161,42 +161,42 @@ And used for dead-serious security (SE-Linux, etc).
     Awesome to work with.
 
 
-  * **Can I use XAs with "tools/OS" of my choice?**
+# Can I use XAs with "tools/OS" of my choice?
 
     Very probably: YES!  That's the beauty of XAs:
 
 
-  * **What about performance?**
+# What about performance?
 
     I'm comparing xattrs to the status quo of personal and professional
-    metadata-handling and storage.  I'm **not worried** about performance (yet),
+    metadata-handling and storage.  I'm not worried about performance (yet),
     but I haven't done hardcore testing with larger datasets yet.
 
     In a nutshell:
 
-    * All music/photo tagging applications have some kind of database (like
+  # All music/photo tagging applications have some kind of database (like
       sqlite)
-    * So the metadata is stored twice: in the file (embedded) and "in" the
+  # So the metadata is stored twice: in the file (embedded) and "in" the
       application's internal storage.
-    * Another time (maybe), if one has a desktop-search indexer running.
+  # Another time (maybe), if one has a desktop-search indexer running.
       Pointing to the same collections.
-    * Larger collections have catalog and task-management systems to handle
+  # Larger collections have catalog and task-management systems to handle
       data processing and access.
-    * Converting applications to use the filesystem as go-to database/index
+  # Converting applications to use the filesystem as go-to database/index
       instead, will actually reduce storage/memory/process needs, compared to
       now.
-    * Most "larger" collections already require cache/indexer networks setup to
+  # Most "larger" collections already require cache/indexer networks setup to
       actually work with their data.
-    * Using xattrs would be way lighter, as common functionalities could be
+  # Using xattrs would be way lighter, as common functionalities could be
       streamlined - by libraries and OS environments.
-    * The overhead of "yet-another" parser for each file-format, just to access
+  # The overhead of "yet-another" parser for each file-format, just to access
       its metadata: obsolete.
-    * This means less code to load, run, maintain, download, consider, etc.
+  # This means less code to load, run, maintain, download, consider, etc.
 
     I think this speaks for good performance, compared to now? :)
 
 
-  * **What about (additional) data-size?**
+# What about (additional) data-size?
 
     As mentioned in "performance" above, the data is currently doubled: because
     of keeping the embedded originals for an expectedly long period from now.
@@ -211,10 +211,10 @@ And used for dead-serious security (SE-Linux, etc).
     thumbnails are created and stored already. And when you copy your files - the
     receiver system does it anew.
 
-    I am **not worried** about additional data-size, compared to now.
+    I am not worried about additional data-size, compared to now.
 
 
-  * **You mentioned de-embedding technical file-headers?**
+# You mentioned de-embedding technical file-headers?
 
     Indeed.
 
@@ -225,7 +225,7 @@ And used for dead-serious security (SE-Linux, etc).
     Just plaintext and numbers.
 
 
-  * **You also mentioned resolving container formats?**
+# You also mentioned resolving container formats?
 
     Yes.  IF you have followed the idea of seriously relying on xattrs to work
     and be present - just like long-filenames with Unicode characters today: Why do
@@ -236,7 +236,7 @@ And used for dead-serious security (SE-Linux, etc).
     trivial, I've made a post to ffmpeg-user about that idea.
 
 
-  * **Xattrs feel so obscure. Almost hidden. Feels odd and scary.**
+# Xattrs feel so obscure. Almost hidden. Feels odd and scary.
 
     True somehow. But not necessary.
     XAs are actually a pretty nice/great/awesome feature.
@@ -251,7 +251,7 @@ And used for dead-serious security (SE-Linux, etc).
     ![Screenshot of MERCS added to Thunar's context-menu, showing MP3 de-embedded metadata](../res/pyQtThunar-rightclickedit-metadata.png)
 
     Adding it as right-click menu action in your file-manager allows "checking and editing" your xattrs at any time.
-    Just literally: **Right-click and edit any metadata.**
+    Just literally: Right-click and edit any metadata.
     Just like that.
 
     Accessing and handling literally /any/ key-value structured metadata is now common, transparent and easily accessible.
@@ -262,7 +262,7 @@ And used for dead-serious security (SE-Linux, etc).
     btw: XAs are available even on folders.  ;)
 
 
-  * **Okay, let's talk code: how hard is it?**
+# Okay, let's talk code: how hard is it?
 
     To be honest, it's actually mind-blowingly simple.
     Given that your environment offers you xattr-libraries/functions. Which most modern languages do (Python, Java, C, etc).
@@ -277,7 +277,7 @@ And used for dead-serious security (SE-Linux, etc).
     From both, user and developer's sides.
 
 
-  * **Can I create an attribute-only copy of a file?**
+# Can I create an attribute-only copy of a file?
 
     Yes.
     This "thin copy" is very useful for transferring or securing metadata stored as XAs.
@@ -288,7 +288,7 @@ And used for dead-serious security (SE-Linux, etc).
     The result (`TARGET`) is a 0-Byte (no payload) copy of `SOURCE`, including
     all supported filesystem attributes.
 
-  * **Enough already! You sold it! How do I do it in Python?**
+# Enough already! You sold it! How do I do it in Python?
 
      Easy! Use ["python.os" built-in methods](https://docs.python.org/3/library/os.html#linux-extended-attributes) (on Linux), or Bob's [xattr](https://bob.ippoli.to/archives/2005/05/03/xattr-darwin-8-extended-filesystem-attributes-from-python/) - get it as [PyPI:xattr](https://pypistats.org/packages/xattr) for Linux+MacOS.
      See: [Python: which lib to use for handling xattrs?](https://github.com/ArkThis/AHAlodeck/discussions/15) for more details.
