@@ -1,5 +1,25 @@
 # FAQs
 
+  * **xattrs, yeah... right: refresh my memory. What /is/ it you're talking about?**
+
+    Extended attributes, are key/value metadata information stored in the
+    filesystem with your data (right with the data object. like the filename or
+    path).
+    This allows storing information that one usually would love to put in the filename or path, like "title", "creator", "artist", "webpage", "tags", etc - can be stored on any kind of filesystem object.
+
+    Like all MP3/Movie/Image annotation- and technical-metadata, including
+    hyperlinks, can be stored directly with the data.
+    
+    Independent of the file-format used inside the file object.
+    That is the beauty of `xattrs`.
+
+    And this is not a hack, it's [an open (POSIX)
+    standard](https://lwn.net/Articles/868505/), and stable as in "this is the
+    engine used for SE (Secure Enterprise) Linux ACLs (Access Control Lists)".
+
+    Which is sysadmin-speak for: `xattrs` are designed and supported to be used for reliable key/value store of metadata.
+    So yes, let's use them. Professionally and personally.
+
   * **xattrs, EAs, XAs, resource forks, named resources: Eh? What now?**  
 
     Yes and all of that.  I'll try to stick to "xattrs" and "XAs" for when I
