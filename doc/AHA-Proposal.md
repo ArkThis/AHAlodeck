@@ -1,17 +1,4 @@
----
-title: A Holodeck by August - Proposal 1
-author: |-
-        Peter Bubestinger-Steindl \
-        `(peter @ ArkThis.com)`
-geometry: a4paper, margin=2cm
-toc: false
-toc-depth: 2
-linkcolor: blue
-
-date: 2024-08-27
----
-
-(this is a ~7min. read)
+> **this is probably a 7min. read**
 
 
 # Project Plans
