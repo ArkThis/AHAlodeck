@@ -4,7 +4,11 @@
 
 Current syntax proposal for this kind of identifier
 
-> `⭐️$TIMESTAMP-your_Context-$rAnDOm?!❤️`
+> `⭐️$TIMESTAMP-$CONTEXT-$RANDOM❤️`
+
+* $TIMESTAMP = kind-of-iso8601 date/time information.
+* $CONTEXT = Any string you'd refer to like an "identifying title".
+* $RANDOM = A random-or-pattern sequence of characters.
 
 
 ## Abstract
