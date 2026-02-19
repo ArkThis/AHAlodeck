@@ -287,8 +287,34 @@ The command on linux (and possibly MacOS too) is:
 The result (`TARGET`) is a 0-Byte (no payload) copy of `SOURCE`, including
 all supported filesystem attributes.
 
-# Enough already! You sold it! How do I do it in Python?
+You may also want to take a look at the "[Metastore](https://packages.debian.org/sid/metastore)" tool on Debian:
 
- Easy! Use ["python.os" built-in methods](https://docs.python.org/3/library/os.html#linux-extended-attributes) (on Linux), or Bob's [xattr](https://bob.ippoli.to/archives/2005/05/03/xattr-darwin-8-extended-filesystem-attributes-from-python/) - get it as [PyPI:xattr](https://pypistats.org/packages/xattr) for Linux+MacOS.
- See: [Python: which lib to use for handling xattrs?](https://github.com/ArkThis/AHAlodeck/discussions/15) for more details.
+> "metastore can also be helpful in a backup script if you want to create a tarball of a file tree and make sure that "everything" (e.g. xattrs, mtime, owner, group) is stored along with the files. "
+
+
+# Enough already! You sold it! How do I do it in ... my favorite programming language?
+
+## Which library to use for xattrs?
+
+  * C Language: Use `#include sys/xattr.h`
+
+    There exist 3 libraries on Debian, for example:
+    1. `sys/xattr.h`,   [GNU glibc](https://www.gnu.org/software///gnulib/manual/html_node/Glibc-sys_002fxattr_002eh.html)
+    THIS is the default one supplied by glibc, and should be present by default on most systems.
+
+    2. `linux/xattr.h`  [Linux Kernel](https://github.com/torvalds/linux/blob/master/include/uapi/linux/xattr.h)
+    For low-level kernel access to xattrs.
+
+    3. `attr/xattr.h`.  [Silicon Graphics, libattr1-dev package](https://cgit.git.savannah.gnu.org/cgit/attr.git/tree/include/attributes.h)
+    Possibly superseded by `sys/xattr.h`. Syntax seems to be 1:1 compatible.
+    Requires pacakge `libattr1-dev` to be installed.
+
+
+  * Python Language:
+    1. Easy! Use ["python.os" built-in methods](https://docs.python.org/3/library/os.html#linux-extended-attributes) (on Linux)
+
+    2. or Bob's [xattr](https://bob.ippoli.to/archives/2005/05/03/xattr-darwin-8-extended-filesystem-attributes-from-python/) for Linux+MacOS.
+    Get it as [PyPI:xattr](https://pypistats.org/packages/xattr)
+
+    See: [Python: which lib to use for handling xattrs?](https://github.com/ArkThis/AHAlodeck/discussions/15) for more details.
 
