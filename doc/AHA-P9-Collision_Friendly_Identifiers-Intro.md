@@ -2,10 +2,17 @@
 
 ## Short update: Supports emojis
 
-Current syntax proposal for this kind of identifier
+Current syntax proposal for this kind of identifier, consisting of 3 parts:
 
-> `⭐️$TIMESTAMP-your_Context-$rAnDOm?!❤️`
+> `⭐️$TIMESTAMP-$CONTEXT-$RANDOM❤️`
 
+* `$TIMESTAMP` = kind-of-iso8601 date/time information.
+* `$CONTEXT` = Any string you'd refer to like an "identifying title".
+* `$RANDOM` = A random-or-pattern sequence of characters.
+
+Each part may be tuned to more-or-less precision.
+
+**NOTE: The rest of this article is slightly outdated (Syntax), but the basic idea described herein is still valid**
 
 ## Abstract
 
