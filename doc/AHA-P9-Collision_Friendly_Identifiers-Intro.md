@@ -538,44 +538,175 @@ Introducting quasi-natural aging to digital data.
 It feels like a good new option.
 
 
+# Timestamp is providing new space for new ages.
 
-# Refreshing
+Anyone may from now on call their diner "Mom's best!", and the CFIDs used as web-URL-replacement to resolve "their websites": You get a couple of answers.
 
-Although it requires a write-operation to the Object filesystem (problematic for tape, or other offline media), if one wants to "pull a certain Object copy out" of the collission ID pool - they can simply do so by "refreshing" the fuzzy parts of the original full-ID of that very copy.
+Possible duplicates, and possible collisions.
+
+However, `1981-Mom's_Best!` is clearly aka `1981-Moms_Best!-AT`, yet easily distinguishable from `1956-Moms_Best!-AT`. So each new generation gets a new namespace automatically.
+
+Anything currently a URL then at least has a digit for a time-indicator.
+Funny thing: By adding $CONTEXT and maybe some $RANDOM, the $TIMESTAMP resolution may not be required to be more than seconds, to be **unique-enough** to store each short-message on the planet. permanently.
+
+
+# Namespace Hoheit?
+
+Who is allowed to publish what Objects in what name?
+- "where?" is the next question.
+
+Same as now on the Internet:
+If you now search for "youtube" on your favorite search engine: which link(s) do you follow?
+
+So if a ❤️&⭐️ ID should point to a URL: you do the same. You check its origin.
+
+Therefore: Anyone can write anything into /their/ pools or pools they have write access to.
+Same as now. Your local ❤️&⭐️ copy and OS-policies define automatically and by your usage, which links to contain.
+
+It may be necessary to implement preconfigured and user-configurable regex-and-beyond matching capabilites to tune-in-and-filter-out the objects and "namespaces" (=patterns) you're interested in.
+
+A bit like tuning analog TV/Radio in a cyber-future, where everyone has their own radio and TV and printing station - all sending out, accessibly by CFIDs.
+
+This can be very noisy.
+But so is the Internet.
+
+Imagine you'd "see" all the Internet traffic happening right now!
+And much of that is still IPv4.
+
+Any indexing "AHA-agent" (=keeper of CSV files or Redis/KeyDB caches) may provide you with an answer containing metadata to your "query by CFID" request.
+
+You (or your OS presets) decide, which "nameservers" you trust.
+And those nameservers take care to manage "public demands" in their best interest.
+Which of course can be creative an even malicious. That's life.
+
+We're in this together now, and usually have great fun together.
+So please be nice and use this technology to make you and others happy.
+
+It will do you and all of us good.
+
+
+## The people are the Hoheit now.
+
+CFID resolution starts out literally with a group of friends.
+And yourself to begin with.
+
+No need to remove all doors and windows and be in fear of evildoers on your data.
+Your local filesystem can already do CFIDs on your local stuff.
+And you'll be amazed how much fun it is to "find your stuff" using these mnemonic strings.
+
+It's trivial to propose "related objects", and to provide filtering and query capabilities. Especially, considering that "the index already is a fully blown attribute-cache database" anyways.
+
+So is the filesystem.
+And therefore the access permissions and "Hoheit" over naming Objects is the same as for all eg ZFS data pools worldwide.
+
+If I share Objects, I can do so with others easily:
+Simply create a HoloTAR, or use the CFID as filename - and put all else in attributes and related objects.
+
+
+## Huge ID Bytesize
+
+Yes. the average CFID as I intend it, is huge.
+Compared to common alpha-numeric or hash used as IDs. They're really small.
+
+However, most of my desktop workstations and notebooks since around 2010 have more RAM than I actually need most of the time. Currently I'm using 2,4 of 32 GB in my office notebook.
+
+And my whole-life-data-NAS-storage has less than 1 GB "filesystem and de-embedded metadata in attributes" stored in a single CSV.
+
+I don't intend to save the few mega-or-gigabytes in ID-glyphs, and I encourage to use ASCII-and-Unicode-Art to make things your own, and put life into them!
+
+By natively supporting UTF-8 and even Emoji glyphs, your namespace becomes virtually as unlimited and inter-connecting as languages can be.
+
+The CFID provides a form of natural pattern-language to store, address and refer to "data" - Objects of Information.
+
+I boldly assume that "hardware is not an issue" these days, given the benefits of CFIDs providing human-natural-interface capabilities.
+
+Of course I remember "⭐️wikipedia❤️"!
+Or: certainly, I know where to find "⭐️wikidata❤️"!
+and so on.
+
+These will resolve to "beacon Objects" that collide = match with these low-precision "search beacon IDs". Your local configuration decides which beacons and links you follow.
+
+That's it.
+
+
+# Viruses infecting the namespaces and resolution services.
+
+Of course.
+Again, I ask you: Why would anyone do that? Can we sort that out please?
+What are you trying to tell us, by disrupting our efforts to have a nice life together on the planet?
+
+Well, if any "malicious" break-in should happen currently to DNS servers, what then?
+
+Same level of OS-security and cache-copy-sync authentication mechanisms are applied as are currently standard for DNS.
+
+The Hoheit lies with the owners/admins of the individual pools.
+
+This is the Internet. We all have equal space an dominions here. If you trust each other.
+
+If a AHA-nameserver should be compromised and handing out malicions beacon-objects or links, this would be bad. However, I presume a signature-style hashing algorithm may suffice (rsync over SSH then SHA?) to detect and drop tampered nameserver replies.
+
+Similar to current DNS.
+However that works: it does.
+
+It's not because you have to pay for a domain: Your provider could simply "for fun" put up some unused domains for themselves by writing text into their config files and restarting the daemons. :)
+
+It's all about trust and ability to focus.
+Focusing on the "data objects and sources" you trust and you engage with.
+
+Similar to email or messenger contacts.
+Start there.
+
+I'm saying, that the anti-evil-measures of the AHA-network are more like in the real world, and it's up to us to make it work nicely.
+
+If people want to mess up all comm-channels for fun-or-profit to a point where it becomes malicious and disruptive: We may want to pay attention for a change?
+
+That's also a reason I chose ❤️&⭐️ as ID-Identifier, to remind me daily what life is all about.
+Definitely love, peace and a bit of magic. ;)
+Paying attention and having best intentions:
+We can have fun and trust with data and digital again:
+if we trust each other "in the real world".
+
+So again: You trust your DNS and web-content/service provider(s) - you can also trust that AHA-IDs can securely be resolved and managed. Just like DNS.
+
+
+
+# Fix colliding IDs? = Refresh them: Add "fuzz-to-copy"
+
+Although it requires a write-operation to the Object filesystem (problematic for tape, or other offline media), but in all other cases:
+
+if one encounters a colliding CFID, where the hash of the payload (file-contents) is different:
+One can simply append $RANDOM to the existing $RANDOM part of the ID.
+Literally "add-fuzz-to-copy".
 
 This would still keep the visible ancestry/relationship by ID: this is like `family` of data.
 And "remembering" your valued data is keeping it in shape.
-Remembering and toggling "a bit".
+Remembering and toggling "a bit or byte(s)".
 
-And anyone at any time may refresh any copy.
-It would quasi "bump" it out of its previous collision spaces - and "throw the dice anew".
 
-That would be the "required action to start preserving that digital object".
 
-I think I know how to build a working prototype for this right now.
-A FOSS stack of production stable implementations and documentation.
+# Working prototype
+
+I know how to build a working prototype for this right now, and me and my colleague already have working parts of it in action on our local network systems:
+
+All stages and parts consist of FOSS stacks of production-stable implementations and documentation.
 With slight alterations to orchestrate the full potential of a graph-DB data storage system.
 
-Sounds interesting?
+If interested, please contact me:
+aha at ArkThis.com
 
 
 
-# Remark
+# Can I use CFIDs as file/foldername?
 
-I just realized this very much feels like "yet another" suggestion how to name your files and folders.
-Maybe it's because this kind of "rather cross-whatever stable" syntax seems so intuitive and familiar to me and everyone grown up with files-in-folders for data.
-
-Indeed:
+Indeed! Absolutely!
 This ID can absolutely be used as-is described here for filenames.
-
-But, please don't forget:
-This is *just* the technical identifier.
 
 > **Yes, people can and shall use it too, but:**
 > The "title" or other metadata describing this Object go in separate, regular filesystem fields.
 
-So if you feel like abusing the `title` component like we used to long-label filenames, please do not.
-The fact there's a `$timestamp + $title` in your ID makes it already pretty fine as it is. No need to overload it to "find your stuff" - or "make sure it's unique".
+**So if you feel like abusing the `title` component like we used to long-label filenames, please do not.** :)
+
+The fact that there's a `$timestamp + $title` part in your ID makes it already pretty fine as it is. No need to overload it to "find your stuff" - or "make sure it's unique".
 
 It's okay.
 
@@ -587,8 +718,61 @@ Thank you. 😘️
 
 
 
-# Changelog
+# Examples for fun with CFIDs:
 
-  * 2024-02-24: Started
-  * 2025-01-17: Changed the format from `%s-%s-%s` to `%s/%s/%s`. For consistency. Added details.
+## Good example: Default for coming from "FinF": Files-in-Folders to Object ID thinking.
+
+> $TIMESTAMP=%yyyy%mm%ddT%H%M%S (from creation timestamp in filesystem)
+> $CONTEXT=currentFolder/Filename.xxx
+> $RANDOM=on demand, as short and visually simple/appealing as possible.
+
+This bridges a gap from FinF (Files-in-Folders) to Object-ID storage designs.
+And keeping it "fuzzy-interoperable" thanks to CFIDs with IDs `full-path/filename.xxx` default.
+
+Yet, please be aware:
+This is *just* the technical identifier.
+The folder is not "a location" anymore. It ascended to "plain metadata". yet-another-key-value-pair. Nothing special, yet very allstar-metadata-key: `user.path` and `user.filename`!
+
+Fun fact: Unicode / UTF-8 and emojis are fully supported and users encouraged to use them "wisely" and in styles that fit their likings. Anything goes.
+
+
+# Here's ONE catch : "no space allowed in ID"
+
+Literally: CFIDs can be anything. Unicode and all.
+BUT: /NO/ space between characters.
+;)
+
+please.
+Thank you.
+
+Let that thing rest once and for all.
+You get the whole free world of filesystem attributes for all metadata you'd loove to put in a file-or-foldername, but no: those days are over.
+
+Let it be good:
+
+Put meta in the key/value attributes (up to 64kB each), and the "largest" stuff currently as payload property: and let it be good.
+
+It has an Identifier value that simply never has issues, because it never - are we clear? :P - please not - has any "space 0x20 dec32 " " - character" in there: no.  - because it never had "a syntax-space" in it.
+
+:)
+
+Enjoy CFID-ing your stuff!
+
+
+# Reference and proof-of-concept implementation & python library
+
+Program [idaha](https://github.com/pjotrek-b/mercs/blob/main/helpers/idaha.py):
+
+  * auto-generates CFIDs for files/folders.
+  * defaults to creation-timestamp in seconds-precision.
+  * precision and patterns can be tuned by-part.
+  * highly as-is to use: "just works"
+  * include `currentfolder/filename.xxx` as $CONTEXT, and even "cover.jpg" is hardly a colliding object collision case anymore.
+
+  * Music example: `⭐️20070129T175516-x_marks_the_spot/cover.jpg❤️`
+
+  * idaha.py includes a ready-to-use cfid-generator and handling class `CFIDGenerator`.
+
+
+> **Have fun with data!**
 
