@@ -142,6 +142,21 @@ And use `getfattr` to create a textfile-backup as sidecar metadata file.
 You can use `setfattr` to translate that sidecar-dump back into attached `xattrs`, at any later time.
 
 
+# Nice shell examples / aliases
+
+I love this one!
+
+```
+alias gx='getfattr -e text -d -m - '
+```
+> -m                      pattern. "-" for ANY.
+> -d, --dump              get all extended attribute values
+> -e, --encoding=...      encode values (as 'text', 'hex' or 'base64')
+
+`gx *` - and you immediately get a terminal-dump of xattrs as text.
+That text output can be written into a file, used to "carry xattrs" safely across transmission-paths. The textfiles are then used to re-apply / restore the xattrs on the fs-objects at any later time.
+
+
 # What if there are data-paths or environments where xattrs are not expected-or-known to pass intact?
 
 Like: Copying files over the network, or email, or messenger, etc - does
