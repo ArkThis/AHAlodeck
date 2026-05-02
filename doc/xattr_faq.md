@@ -24,6 +24,27 @@ So yes, let's use them. Professionally and personally.
 It even works on [Android (F2FS)](https://github.com/ArkThis/AHAlodeck/discussions/8).
 
 
+# Are "Resource Forks", "Alternate Data Streams" related to xattrs?
+
+Seems so. I honestly don't know.
+
+According to documentation and articles I read online, it seems that:
+
+  * Apple:  
+    Classic MacOS supports, what they call "Resource Forks" since the mid 1990s.
+    They are exactly intended to handle "related objects" in the filesystem, and for storing with metadata with the objects.
+    So MacOS legacy OS design already intended to store object-oriented data directly, almost RAM-natively on disk.
+
+  * Microsoft:  
+    NTFS is capable of storing "related data" as, what they call "Alternate Data Streams".
+    See: [How to Create, Open, Detect, and Remove Alternate Data Streams](https://www.minitool.com/partition-disk/alternate-data-streams.html) (2024)
+
+So AFAIK (but haven't bothered to test yet), MacOS is definitely a great OS for AHAlodeck-intended usage, as the filesystems allow unlimited number and length of key/value attributes.
+
+MacOS and Linux often can use identical programming libraries for xattr support.
+Windows NTFS key/value handling requires separate cold, and behaves also fundamentally differently in the filesystem-code/design itself, compared to POSIX xattrs.
+
+
 # Which filesystem(s) are we talking about?
 
 Who can do `xattrs`?
@@ -63,28 +84,51 @@ However, I've so far developed and tested exclusively on Linux
 (Debian-based) systems - with great success.
 
 
-# xattrs, EAs, XAs, resource forks, named resources: Eh? What now?
+# xattrs, EAs, XAs, resource forks, alternate data streams: Eh? What now?
 
-Yes and all of that.  I'll try to stick to "xattrs" and "XAs" for when I
-mean "extended file attributes in general".  I use "XA" as "I can store
-key/value data with an fs-object" (FileSystem-Object).  Like YUV and YCbCr,
-etc...  I prefer using them term `xattr` (unless I'm too lazy to type, then
-`XA`).  Also because to give all Linux/POSIX developers credit for taking
-interoperability seriously. Respect and Thanks.
+Yes and all of that.
+
+I'll try to stick to "xattrs" and "XAs" for when I mean "extended file attributes in general".  I use "XA" as "I can store key/value data with an fs-object" (FileSystem-Object).  Like YUV and YCbCr, etc...  I prefer using them term `xattr` (unless I'm too lazy to type, then `XA`).  Also because to give all Linux/POSIX developers credit for taking interoperability seriously. Thank you.
+
+So however it's called in different implementations:
+What counts for AHAlodeck, and using the FileSystem as annotated-related-object-graph storage (and database, at the same time): by being able to store and access key/value information /with/ its data.
+
+Remember one thing: "xattrs" to begin with. :D
 
 
 # Are XAs reliable?
 
 I'm pretty sure they are.
+But YES: There are caveats, and open questions, but it's it's worth it.
 
-As long as you stay on the same filesystem/partition.  However: It's still
-an officially stable feature of many existing, mainstream and server systems.
-And used for dead-serious security (SE-Linux, etc).
+xattrs are stable and "enterprise-security-secure":
+They're used daily, worldwide for dead-serious enterprise security needs (SE-Linux, etc).
+
+As long as you stay on the same filesystem/partition, and make sure the tools you use across a workflow/lifecycle of xattr-enriched "Objects", have like `--xattrs` enabled.
+
+Many applications have xattr support, yet often disabled by default.
+Simply due to "noone's asked about it, to prioritize it". That's all.
+
+So for the time being:
+
+**Take caution and check if all your xattrs travel well and bit-proof at best, at least encoding-safe somehow.**
+
+And file issue-tracker reports, where xattrs would need more attention to "travel and behave well" in the future.
+
+For starters:
+I suggest putting their "presence" somehow visible (and right-click accessible) in file-management UIs. And enable-and-respect them by default, when copying/(un)zipping stuff, etc.
+
+Imagine instant messengers would honor xattrs as they do UTF-8 to have emojis in filenames ;)
+So yes, xattrs can become very reliable very quickly.
+
+When demanded so.
+
 
 
 # Will XAs get lost on their way?
 
-Depends. At the moment, they may be lost quite easily.
+Depends. **At the moment, they may be lost quite easily. :sob:**
+
 Simply because the application developers didn't consider them (important).
 Yet, many core and popular GNU/FOSS commandline tools often give a
 `--xattrs` switch to enable them.
