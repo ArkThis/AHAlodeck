@@ -1,0 +1,1 @@
+cfids-❤️&⭐️/CFIDs_(Collision_Friendly_Identifiers)-Intro.md
