@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>git-annex-metadata</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="icon" href="../favicon.ico" type="image/x-icon" />
+
+<link rel="stylesheet" href="../style.css" type="text/css" />
+
+<link rel="stylesheet" href="../local.css" type="text/css" />
+
+
+
+
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/ikiwiki.cgi?do=edit&amp;page=git-annex-metadata" />
+
+
+<link rel="vcs-git" href="ssh://b-git-annex@git-annex.branchable.com/" title="wiki git repository" />
+<link rel="vcs-git" href="git://git-annex.branchable.com/" title="wiki git repository" />
+
+
+
+
+</head>
+<body>
+
+<div class="page">
+
+<div class="pageheader">
+<div class="header">
+<span>
+<span class="parentlinks">
+
+<a href="../">git-annex</a>/ 
+
+</span>
+<span class="title">
+git-annex-metadata
+
+</span>
+</span>
+
+
+<form method="get" action="/ikiwiki.cgi" id="searchform">
+<div>
+<input type="text" id="searchbox" name="P" value="" size="16"
+  placeholder="search" />
+</div>
+</form>
+
+
+
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?do=edit&amp;page=git-annex-metadata" rel="nofollow">Edit</a></li>
+
+
+<li><a href="../recentchanges/">RecentChanges</a></li>
+
+
+<li><a rel="nofollow" href="http://source.git-annex.branchable.com/?p=source.git;a=history;f=doc/git-annex-metadata.mdwn;hb=HEAD">History</a></li>
+
+
+
+<li><a rel="nofollow" href="/ikiwiki.cgi?do=prefs">Preferences</a></li>
+
+
+
+<li><a href="/ikiwiki.cgi?do=branchable">Branchable</a></li>
+
+
+
+<li><a href="./#comments">11 comments</a></li>
+
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+<div class="sidebar">
+<p><img src="../logo_small.png" width="150" height="142" class="img" /></p>
+
+<ul>
+<li><a href="../install/">install</a></li>
+<li><a href="../assistant/">assistant</a></li>
+<li><a href="../walkthrough/">walkthrough</a></li>
+<li><a href="../tips/">tips</a></li>
+<li><a href="../bugs/">bugs</a></li>
+<li><a href="../todo/">todo</a></li>
+<li><a href="../forum/">forum</a></li>
+<li><a href="../comments/">comments</a></li>
+<li><a href="../contact/">contact</a></li>
+<li><a href="../thanks/">thanks</a></li>
+</ul>
+
+
+</div>
+
+
+
+<div id="pagebody">
+
+<div id="content" role="main">
+<h1>NAME</h1>
+
+<p>git-annex metadata - sets or gets metadata of a file</p>
+
+<h1>SYNOPSIS</h1>
+
+<p>git annex metadata <code>[path ...]</code></p>
+
+<h1>DESCRIPTION</h1>
+
+<p>The content of an annexed file can have any number of metadata fields
+attached to it to describe it. Each metadata field can in turn
+have any number of values.</p>
+
+<p>This command can be used to set metadata, or show the currently set
+metadata.</p>
+
+<p>When run without any -s or -t parameters, displays the current metadata.</p>
+
+<p>Each metadata field has its own "field-lastchanged" metadata, which
+contains the date the field was last changed. Unlike other metadata,
+this cannot be directly modified by this command. It is updated
+automatically.</p>
+
+<p>Note that the metadata is attached to git-annex key corresponding to the
+content of a file, not to a particular filename on a particular git branch.
+All files with the same key share the same metadata, which is
+stored in the git-annex branch. If a file is modified, the metadata
+of the previous version will be copied to the new key when git-annex adds
+the modified file.</p>
+
+<h1>OPTIONS</h1>
+
+<ul>
+<li><p><code>-g field</code> / <code>--get field</code></p>
+
+<p>Get the value(s) of a single field.</p>
+
+<p>The values will be output one per line, with no other output, so
+this is suitable for use in a script.</p></li>
+<li><p><code>-s field=value</code> / <code>--set field=value</code></p>
+
+<p>Set a field's value, removing any old values.</p></li>
+<li><p><code>-s field+=value</code> / <code>--set field+=value</code></p>
+
+<p>Add an additional value, preserving any old values.</p></li>
+<li><p><code>-s field?=value</code> / <code>--set field?=value</code></p>
+
+<p>Set a value, but only if the field does not already have a value set.</p></li>
+<li><p><code>-s field-=value</code> / <code>--set field-=value</code></p>
+
+<p>Remove a value from a field, leaving any other values that the field has
+set.</p></li>
+<li><p><code>-r field</code> / <code>--remove field</code></p>
+
+<p>Remove all current values of the field.</p></li>
+<li><p><code>-t tag</code> / <code>--tag tag</code></p>
+
+<p>Set a tag. Note that a tag is just a value of the "tag" field.</p></li>
+<li><p><code>-u tag</code> / <code>--unset tag</code></p>
+
+<p>Unset a tag.</p></li>
+<li><p><code>--remove-all</code></p>
+
+<p>Remove all metadata from the specified files.</p>
+
+<p>When a file is modified and the new version added, git-annex will copy
+over the metadata from the old version of the file. In situations where
+you don't want that copied metadata, you can use this option to remove
+it.</p></li>
+<li><p><code>--force</code></p>
+
+<p>By default, <code>git annex metadata</code> refuses to recursively set metadata
+throughout the files in a directory. This option enables such recursive
+setting.</p></li>
+<li><p>matching options</p>
+
+<p>The <a href="../git-annex-matching-options/">git-annex-matching-options</a>(1)
+can be used to control what to act on.</p></li>
+<li><p><code>--all</code> <code>-A</code></p>
+
+<p>Specify instead of a file to get/set metadata on all known keys.</p></li>
+<li><p><code>--branch=ref</code></p>
+
+<p>Specify instead of a file to get/set metadata on all files in the
+specified branch or treeish.</p></li>
+<li><p><code>--unused</code></p>
+
+<p>Specify instead of a file to get/set metadata on
+files found by last run of git-annex unused.</p></li>
+<li><p><code>--key=keyname</code></p>
+
+<p>Specify instead of a file to get/set metadata of the specified key.</p></li>
+<li><p><code>--json</code></p>
+
+<p>Enable JSON output (and input). Each line is a JSON object.</p>
+
+<p>The format of the JSON objects changed in git-annex version 6.20160726.</p>
+
+<p>Example of the new format:</p>
+
+<p>  {"command":"metadata","file":"foo","key":"...","fields":{"author":["bar"],...},"note":"...","success":true}</p>
+
+<p>Example of the old format, which lacks the inner fields object:</p>
+
+<p>  {"command":"metadata","file":"foo","key":"...","author":["bar"],...,"note":"...","success":true}</p></li>
+<li><p><code>--json-error-messages</code></p>
+
+<p>Messages that would normally be output to standard error are included in
+the JSON instead.</p></li>
+<li><p><code>--batch</code></p>
+
+<p>Enables batch mode, which can be used to both get, store, and unset
+metadata for multiple files or keys.</p>
+
+<p>Batch currently only supports JSON input. So, you must
+enable <code>--json</code> along with <code>--batch</code>.</p>
+
+<p>In batch mode, git-annex reads lines from stdin, which contain
+JSON objects. It replies to each input annexed file
+with an output JSON object. (But if the file is not an annexed file,
+an empty line will be output.)</p>
+
+<p>The format of the JSON sent to git-annex can be the same as the JSON that
+it outputs. Or, a simplified version. Only the "file" (or "key") field
+is actually necessary.</p>
+
+<p>For example, to get the current metadata of file foo:</p>
+
+<p>  {"file":"foo"}</p>
+
+<p>To get the current metadata of the key k:</p>
+
+<p>  {"key":"k"}</p>
+
+<p>Any metadata fields included in the JSON object will be stored,
+replacing whatever values the fields had before.
+To unset a field, include it with an empty list of values.</p>
+
+<p>To change the author of file foo to bar:</p>
+
+<p>  {"file":"foo","fields":{"author":["bar"]}}</p>
+
+<p>To remove the author of file foo:</p>
+
+<p>  {"file":"foo","fields":{"author":[]}}</p></li>
+<li><p>Also the <a href="../git-annex-common-options/">git-annex-common-options</a>(1) can be used.</p></li>
+</ul>
+
+
+<h1>EXAMPLES</h1>
+
+<p>To set some tags on a file and also its author:</p>
+
+<pre><code>git annex metadata annexscreencast.ogv -t video -t screencast -s author+=Alice
+</code></pre>
+
+<h1>SEE ALSO</h1>
+
+<p><a href="../git-annex/">git-annex</a>(1)</p>
+
+<p><a href="../git-annex-view/">git-annex-view</a>(1)</p>
+
+<h1>AUTHOR</h1>
+
+<p>Joey Hess <a href="mailto:id@joeyh.name">&#105;&#100;&#64;&#106;&#111;&#101;&#121;&#104;&#46;&#110;&#97;&#109;&#101;</a></p>
+
+<p>Warning: Automatically converted into a man page by mdwn2man. Edit with care.</p>
+
+</div>
+
+
+
+
+
+<div id="comments" role="complementary">
+<div  class="feedlink">
+
+<a class="feedbutton" type="application/rss+xml" rel="alternate" title="git-annex (RSS feed)" href="comments.rss">RSS</a>
+
+
+<a class="feedbutton" type="application/atom+xml" rel="alternate" title="git-annex (Atom feed)" href="comments.atom">Atom</a>
+
+</div>
+<div class="comment" id="comment-b80587aab8fff9f23e77d1ee79154722">
+
+<div class="comment-avatar">
+<img src="http://cdn.libravatar.org/avatar/8a133555cc739a35b83b07d5724d28d9e2f7852c224e949eec6fd4fb7693331e" alt="" />
+</div>
+
+<div class="comment-subject">
+
+<a href="http://git-annex.branchable.com/git-annex-metadata/#comment-b80587aab8fff9f23e77d1ee79154722">adding metadata to keys that don&#x27;t point to any contents is ok, correct?</a>
+
+</div>
+
+<div class="inlinecontent">
+<p>I want to store a simple mapping in git-annex on the git-annex branch, from string keys to values.  I figured I can just do
+ git annex metadata --key=WORM-s0-m0--mykey -s myfield+=myvalue
+and after git annex sync these mappings will propagate to copies of the repo.  But the keys won't point to any file in any remote.
+Will that break anything in git-annex?  Will they get garbage-collected automatically in some circumstances?</p>
+
+
+</div>
+
+<div class="comment-header">
+
+Comment by
+
+<span class="author" title="OpenID">
+<a rel="nofollow" href="https://me.yahoo.com/a/iOGTltEpmOTQ.xZ99NFP5c7Zdcc-#6a7ba">Ilya S</a>
+</span>
+
+
+&mdash; <span class="relativedate" title="Sat, 08 Sep 2018 22:36:06 +0000">Sat Sep  8 22:36:06 2018</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?do=remove&amp;page=git-annex-metadata%2Fcomment_1_45492400069021adbe048978be6957ef" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</div>
+
+
+<div style="clear: both"></div>
+</div>
+<div class="comment" id="comment-9704fd72c1c6656787393735cc53c717">
+
+
+
+<div class="comment-subject">
+
+<a href="http://git-annex.branchable.com/git-annex-metadata/#comment-9704fd72c1c6656787393735cc53c717">comment 2</a>
+
+</div>
+
+<div class="inlinecontent">
+<p>The only risk in doing this is that if you somehow later add a file that
+actually uses that key it will have this metadata.</p>
+
+<p>There's no garbage collection of metadata except for keys that have been
+marked as dead with <code>git annex dead</code>.</p>
+
+
+</div>
+
+<div class="comment-header">
+
+Comment by
+
+<span class="author" title="Signed in">
+
+<a rel="nofollow" href="/ikiwiki.cgi?do=goto&amp;page=users%2Fjoey">joey</a>
+
+</span>
+
+
+&mdash; <span class="relativedate" title="Tue, 11 Sep 2018 16:33:15 +0000">Tue Sep 11 16:33:15 2018</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?do=remove&amp;page=git-annex-metadata%2Fcomment_2_12e615b99bf9999df0678cb6dc09d398" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</div>
+
+
+<div style="clear: both"></div>
+</div>
+<div class="comment" id="comment-fde59930f108af0fff842f5e25351e93">
+
+<div class="comment-avatar">
+<img src="http://cdn.libravatar.org/avatar/f11e9c84cb18d26a1748c33b48c924b4" alt="" />
+</div>
+
+<div class="comment-subject">
+
+<a href="http://git-annex.branchable.com/git-annex-metadata/#comment-fde59930f108af0fff842f5e25351e93">question about .gitattributes</a>
+
+</div>
+
+<div class="inlinecontent">
+<p>Joey, I feel like I have asked it before, but can't quickly search it up, so asking again (sorry if repeating). By</p>
+
+<blockquote><p>To attach metadata to a particular path, rather than a particular key, use .gitattributes .</p></blockquote>
+
+<p>you meant attaching some other metadata, not really "git-annex" metadata, right?
+Or there is a way to specify metadata <code>key=value</code> pairs to be attached to annexed files, e.g. smth like</p>
+
+<pre><code>*_scans.json annex.metadata=(distribution-restrictions=sensitive)
+</code></pre>
+
+<p>?</p>
+
+
+</div>
+
+<div class="comment-header">
+
+Comment by
+
+<span class="author" title="Signed in">
+
+<a rel="nofollow" href="/ikiwiki.cgi?do=goto&amp;page=users%2Fyarikoptic">yarikoptic</a>
+
+</span>
+
+
+&mdash; <span class="relativedate" title="Fri, 03 May 2019 15:21:41 +0000">Fri May  3 15:21:41 2019</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?do=remove&amp;page=git-annex-metadata%2Fcomment_3_6537bd785997501a9708682acd91f9f6" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</div>
+
+
+<div style="clear: both"></div>
+</div>
+<div class="comment" id="comment-7217ba67529d1acc04ae2e97b92bc293">
+
+
+
+<div class="comment-subject">
+
+<a href="http://git-annex.branchable.com/git-annex-metadata/#comment-7217ba67529d1acc04ae2e97b92bc293">comment 4</a>
+
+</div>
+
+<div class="inlinecontent">
+<p>I did not write that, Ilya did. I agree that it was confusing that it was
+talking about some entirely different kind of metadata, and have reworded
+it.</p>
+
+
+</div>
+
+<div class="comment-header">
+
+Comment by
+
+<span class="author" title="Signed in">
+
+<a rel="nofollow" href="/ikiwiki.cgi?do=goto&amp;page=users%2Fjoey">joey</a>
+
+</span>
+
+
+&mdash; <span class="relativedate" title="Fri, 03 May 2019 15:34:07 +0000">Fri May  3 15:34:07 2019</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?do=remove&amp;page=git-annex-metadata%2Fcomment_4_49c885bd5840aba9f9e011a1618931a1" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</div>
+
+
+<div style="clear: both"></div>
+</div>
+<div class="comment" id="comment-ac86a0e1a7383c7a867a7f9ac5212664">
+
+<div class="comment-avatar">
+<img src="http://cdn.libravatar.org/avatar/1647044369aa7747829c38b9dcc84df0" alt="" />
+</div>
+
+<div class="comment-subject">
+
+<a href="http://git-annex.branchable.com/git-annex-metadata/#comment-ac86a0e1a7383c7a867a7f9ac5212664">comment 5</a>
+
+</div>
+
+<div class="inlinecontent">
+<p>I think I added that line to the docs, and yes, it's not for git-annex metadata.  I'll clarify the page.</p>
+
+<p>I'm not sure there is a well-defined way to set git-annex metadata via .gitattributes, given the different semantics of git-annex metadata (it's tied to timestamps, and is shared between all branches).  Maybe one could define some unified-metadata, which interprets git-annex metadata on an annexed file as implicitly setting .gitattributes for that file in that directory.</p>
+
+
+</div>
+
+<div class="comment-header">
+
+Comment by
+
+<span class="author" title="Signed in">
+
+<a rel="nofollow" href="/ikiwiki.cgi?do=goto&amp;page=users%2FIlya_Shlyakhter">Ilya_Shlyakhter</a>
+
+</span>
+
+
+&mdash; <span class="relativedate" title="Fri, 03 May 2019 15:50:43 +0000">Fri May  3 15:50:43 2019</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?do=remove&amp;page=git-annex-metadata%2Fcomment_5_b4f928a4e8a81165e3845219483a9b25" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</div>
+
+
+<div style="clear: both"></div>
+</div>
+<div class="comment" id="comment-8e98486412f8050f022c39e65cd6228a">
+
+<div class="comment-avatar">
+<img src="http://cdn.libravatar.org/avatar/f11e9c84cb18d26a1748c33b48c924b4" alt="" />
+</div>
+
+<div class="comment-subject">
+
+<a href="http://git-annex.branchable.com/git-annex-metadata/#comment-8e98486412f8050f022c39e65cd6228a">meanwhile</a>
+
+</div>
+
+<div class="inlinecontent">
+<p>I am <a href="https://github.com/datalad/datalad/issues/3696">thinking about some abominations</a> to workaround inability to specify smth like</p>
+
+<pre><code>licenses/* annex.commit.metadata=(distribution-restrictions=sensitive)
+</code></pre>
+
+<p>in <code>.gitattributes</code>. IMHO by limiting to <code>.commit</code> the scope when annex should add metadata becomes clear.  Sure thing it could leak across files with the same content (0-length files are most prone) but it is unrelated IMHO since a direct call to <code>git annex metadata licenses/* -s ...</code> would have the same effect anyways.</p>
+
+
+</div>
+
+<div class="comment-header">
+
+Comment by
+
+<span class="author" title="Signed in">
+
+<a rel="nofollow" href="/ikiwiki.cgi?do=goto&amp;page=users%2Fyarikoptic">yarikoptic</a>
+
+</span>
+
+
+&mdash; <span class="relativedate" title="Fri, 20 Sep 2019 18:53:03 +0000">Fri Sep 20 18:53:03 2019</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?do=remove&amp;page=git-annex-metadata%2Fcomment_6_11b1fa357953736925cfbbc1079590dd" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</div>
+
+
+<div style="clear: both"></div>
+</div>
+<div class="comment" id="comment-b9bd0e10fcd0bcad17595f9357e354fd">
+
+<div class="comment-avatar">
+<img src="http://cdn.libravatar.org/avatar/80a7d8c2a7b475b6b71198cce0faa6b0" alt="" />
+</div>
+
+<div class="comment-subject">
+
+<a href="http://git-annex.branchable.com/git-annex-metadata/#comment-b9bd0e10fcd0bcad17595f9357e354fd">Get list of files with specific metadata</a>
+
+</div>
+
+<div class="inlinecontent">
+<p>Hello,
+I would like to know, is it possible to get in one command all files with a particular tag, or a list of tags (like "give all files that have tag foo or tag bar"). Note that I don't want to change the current view. Also, are you aware of any music player that could use these tags to find some songs to play and add them to some playlist?</p>
+
+
+</div>
+
+<div class="comment-header">
+
+Comment by
+
+<span class="author" title="Signed in">
+
+<a rel="nofollow" href="/ikiwiki.cgi?do=goto&amp;page=users%2FtobiasBora">tobiasBora</a>
+
+</span>
+
+
+&mdash; <span class="relativedate" title="Mon, 23 Sep 2019 13:16:11 +0000">Mon Sep 23 13:16:11 2019</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?do=remove&amp;page=git-annex-metadata%2Fcomment_7_fe7d15a1a4cd729b6ffec26f49d8b47a" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</div>
+
+
+<div style="clear: both"></div>
+</div>
+<div class="comment" id="comment-9d902d02ec365b98fcf12e66927de3ea">
+
+
+
+<div class="comment-subject">
+
+<a href="http://git-annex.branchable.com/git-annex-metadata/#comment-9d902d02ec365b98fcf12e66927de3ea">comment 8</a>
+
+</div>
+
+<div class="inlinecontent">
+<p>See <a href="../git-annex-matching-options/">git-annex-matching-options</a> for ways to query for metadata.</p>
+
+<p>For example:</p>
+
+<pre><code>git annex find --metadata tag=foo --or --metadata tag=bar
+</code></pre>
+
+
+</div>
+
+<div class="comment-header">
+
+Comment by
+
+<span class="author" title="Signed in">
+
+<a rel="nofollow" href="/ikiwiki.cgi?do=goto&amp;page=users%2Fjoey">joey</a>
+
+</span>
+
+
+&mdash; <span class="relativedate" title="Mon, 23 Sep 2019 14:12:55 +0000">Mon Sep 23 14:12:55 2019</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?do=remove&amp;page=git-annex-metadata%2Fcomment_8_54cff011e3e13882cfbd7a30fb43d078" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</div>
+
+
+<div style="clear: both"></div>
+</div>
+<div class="comment" id="comment-002f8d84c9709b5fb569670ce5042fc6">
+
+<div class="comment-avatar">
+<img src="http://cdn.libravatar.org/avatar/80a7d8c2a7b475b6b71198cce0faa6b0" alt="" />
+</div>
+
+<div class="comment-subject">
+
+<a href="http://git-annex.branchable.com/git-annex-metadata/#comment-002f8d84c9709b5fb569670ce5042fc6">comment 9</a>
+
+</div>
+
+<div class="inlinecontent">
+Ok thank you! If you also have names of music playes that can actually read tags from git annex, let me know!
+
+</div>
+
+<div class="comment-header">
+
+Comment by
+
+<span class="author" title="Signed in">
+
+<a rel="nofollow" href="/ikiwiki.cgi?do=goto&amp;page=users%2FtobiasBora">tobiasBora</a>
+
+</span>
+
+
+&mdash; <span class="relativedate" title="Tue, 24 Sep 2019 14:49:21 +0000">Tue Sep 24 14:49:21 2019</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?do=remove&amp;page=git-annex-metadata%2Fcomment_9_a14b21109aa12eaf13e8c215e108cc29" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</div>
+
+
+<div style="clear: both"></div>
+</div>
+<div class="comment" id="comment-e623466335daf3207dad4eb0a8a02d58">
+
+<div class="comment-avatar">
+<img src="http://cdn.libravatar.org/avatar/b37d71961a6a5abf9b7184ed77b5a941" alt="" />
+</div>
+
+<div class="comment-subject">
+
+<a href="http://git-annex.branchable.com/git-annex-metadata/#comment-e623466335daf3207dad4eb0a8a02d58">comment 10</a>
+
+</div>
+
+<div class="inlinecontent">
+<p>From this man page, it's not totally clear how/where the metadata is stored. Is it inside the Git repo (i.e. as regular file), or inside the Annex, or somewhere else? Is this information synced when you do <code>git push</code> (as part of Git), or via <code>git annex sync</code>?</p>
+
+<p>How does it resolve any conflicts?</p>
+
+<p>Is the metadata itself under version control? (If it is in Git itself, then clearly yes, but that's not clear to me.)</p>
+
+
+</div>
+
+<div class="comment-header">
+
+Comment by
+
+<span class="author" title="Signed in">
+
+<a rel="nofollow" href="/ikiwiki.cgi?do=goto&amp;page=users%2FAlbertZeyer">AlbertZeyer</a>
+
+</span>
+
+
+&mdash; <span class="relativedate" title="Sun, 03 Jan 2021 22:07:02 +0000">Sun Jan  3 22:07:02 2021</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?do=remove&amp;page=git-annex-metadata%2Fcomment_10_278fca1c579d0acdcce819449aec8eee" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</div>
+
+
+<div style="clear: both"></div>
+</div>
+<div class="comment" id="comment-2751f256d18ca9f23bb18dfac7535fc8">
+
+
+
+<div class="comment-subject">
+
+<a href="http://git-annex.branchable.com/git-annex-metadata/#comment-2751f256d18ca9f23bb18dfac7535fc8">comment 11</a>
+
+</div>
+
+<div class="inlinecontent">
+<p>@AlbertZeyer, this man page says it is "stored in the git-annex branch."</p>
+
+<p>That branch is synced whenever you push it, which git-annex sync does do,
+but git push can also be set up to do. The branch is automatically merged.</p>
+
+
+</div>
+
+<div class="comment-header">
+
+Comment by
+
+<span class="author" title="Signed in">
+
+<a rel="nofollow" href="/ikiwiki.cgi?do=goto&amp;page=users%2Fjoey">joey</a>
+
+</span>
+
+
+&mdash; <span class="relativedate" title="Mon, 04 Jan 2021 16:06:02 +0000">Mon Jan  4 16:06:02 2021</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?do=remove&amp;page=git-annex-metadata%2Fcomment_11_deee9a4c3a812c9c8097d89f2f6c7d76" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</div>
+
+
+<div style="clear: both"></div>
+</div>
+
+
+
+
+<div class="addcomment">
+<a rel="nofollow" href="/ikiwiki.cgi?do=comment&amp;page=git-annex-metadata">Add a comment</a>
+</div>
+
+</div>
+
+
+
+</div>
+
+<div id="footer" class="pagefooter" role="contentinfo">
+
+<div id="pageinfo">
+
+
+
+
+
+
+
+<div id="backlinks">
+Links:
+
+<a href="../forum/Exporting_files_to_special_remote__44___even_if_not_in_preferred_contents/comment_1_8276c225867733e7a79ba47be2447b1e/">forum/Exporting files to special remote&#44; even if not in preferred contents/comment 1 8276c225867733e7a79ba47be2447b1e</a>
+
+<a href="../git-annex/">git-annex</a>
+
+<a href="../git-annex-sim/">git-annex-sim</a>
+
+<a href="../git-annex-vadd/">git-annex-vadd</a>
+
+<a href="../git-annex-vcycle/">git-annex-vcycle</a>
+
+<a href="../git-annex-vfilter/">git-annex-vfilter</a>
+
+<a href="../git-annex-view/">git-annex-view</a>
+
+<a href="../git-annex-vpop/">git-annex-vpop</a>
+
+<a href="../related_software/">related software</a>
+
+<a href="../sync/comment_25_ea6f4e1f5ab31cd74d67fe95e83084cb/">sync/comment 25 ea6f4e1f5ab31cd74d67fe95e83084cb</a>
+
+
+<span class="popup">...
+<span class="balloon">
+
+<a href="../todo/alternate_keys_for_same_content/comment_7_1c0a975893c63c14b3f6e17712b5191c/">todo/alternate keys for same content/comment 7 1c0a975893c63c14b3f6e17712b5191c</a>
+
+</span>
+</span>
+
+</div>
+
+
+
+
+
+
+<div class="pagedate">
+Last edited <span class="relativedate" title="Tue, 25 Apr 2023 22:46:17 +0000">Tue Apr 25 22:46:17 2023</span>
+<!-- Created <span class="relativedate" title="Wed, 25 Mar 2015 16:18:56 +0000">Wed Mar 25 16:18:56 2015</span> -->
+</div>
+
+</div>
+
+
+<!-- from git-annex -->
+</div>
+
+</div>
+<script src="../ikiwiki/ikiwiki.js" type="text/javascript" charset="utf-8"></script>
+<script src="../ikiwiki/toggle.js" type="text/javascript" charset="utf-8"></script>
+<script src="../ikiwiki/ikiwiki.js" type="text/javascript" charset="utf-8"></script>
+<script src="../ikiwiki/relativedate.js" type="text/javascript" charset="utf-8"></script></body>
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="fr-FR">
+<head>
+<meta charset="UTF-8" />
+<title>Tag based file system using FUSE | Blog L&#8217;Ordikc</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="stylesheet" type="text/css" media="all" href="http://lordikc.free.fr/wordpress/wp-content/themes/twentyten/style.css" />
+<link rel="pingback" href="http://lordikc.free.fr/wordpress/xmlrpc.php" />
+<link rel="alternate" type="application/rss+xml" title="Blog L&#039;Ordikc &raquo; Feed" href="http://lordikc.free.fr/wordpress/?feed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="Blog L&#039;Ordikc &raquo; Comments Feed" href="http://lordikc.free.fr/wordpress/?feed=comments-rss2" />
+<link rel="alternate" type="application/rss+xml" title="Blog L&#039;Ordikc &raquo; Tag based file system using FUSE Comments Feed" href="http://lordikc.free.fr/wordpress/?feed=rss2&amp;p=689" />
+<script type='text/javascript' src='http://lordikc.free.fr/wordpress/wp-content/plugins/si-captcha-for-wordpress/captcha-secureimage/si_captcha.js?ver=3.0.4'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://lordikc.free.fr/wordpress/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://lordikc.free.fr/wordpress/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='Blog L&#8217;Ordikc' href='http://lordikc.free.fr/wordpress' />
+<link rel='start' title='Mandriva 2007 ONE sur clé USB' href='http://lordikc.free.fr/wordpress/?p=4' />
+<link rel='prev' title='Un serveur Web securisé sous Mandriva' href='http://lordikc.free.fr/wordpress/?p=679' />
+<link rel='next' title='Simple Image Viewer for Linux/X11: Xiv' href='http://lordikc.free.fr/wordpress/?p=701' />
+<meta name="generator" content="WordPress 3.0.4" />
+<link rel='canonical' href='http://lordikc.free.fr/wordpress/?p=689' />
+</head>
+
+<body class="single single-post postid-689">
+<div id="wrapper" class="hfeed">
+	<div id="header">
+		<div id="masthead">
+			<div id="branding" role="banner">
+								<div id="site-title">
+					<span>
+						<a href="http://lordikc.free.fr/wordpress/" title="Blog L&#8217;Ordikc" rel="home">Blog L&#8217;Ordikc</a>
+					</span>
+				</div>
+				<div id="site-description">Blog l&#8217;Ordikc : Montages électroniques et bidouilles informatiques</div>
+
+										<img src="http://lordikc.free.fr/wordpress/wp-content/themes/twentyten/images/headers/ciel.jpg" width="940" height="198" alt="" />
+								</div><!-- #branding -->
+
+			<div id="access" role="navigation">
+			  				<div class="skip-link screen-reader-text"><a href="#content" title="Skip to content">Skip to content</a></div>
+								<div class="menu"><ul><li ><a href="http://lordikc.free.fr/wordpress/" title="Home">Home</a></li><li class="page_item page-item-86"><a href="http://lordikc.free.fr/wordpress/?page_id=86" title="Blog L&#8217;Ordikc">Blog L&#8217;Ordikc</a></li><li class="page_item page-item-225"><a href="http://lordikc.free.fr/wordpress/?page_id=225" title="Chateaux médiévaux">Chateaux médiévaux</a></li><li class="page_item page-item-402"><a href="http://lordikc.free.fr/wordpress/?page_id=402" title="EEE-PC 4G user event handling">EEE-PC 4G user event handling</a></li><li class="page_item page-item-1002"><a href="http://lordikc.free.fr/wordpress/?page_id=1002" title="Freelance">Freelance</a></li><li class="page_item page-item-361"><a href="http://lordikc.free.fr/wordpress/?page_id=361" title="Mandriva 2009 compress /usr">Mandriva 2009 compress /usr</a></li><li class="page_item page-item-334"><a href="http://lordikc.free.fr/wordpress/?page_id=334" title="Mandriva 2009 LXDE NetBook">Mandriva 2009 LXDE NetBook</a></li><li class="page_item page-item-158"><a href="http://lordikc.free.fr/wordpress/?page_id=158" title="Mandriva One USB &#8211; Eng">Mandriva One USB &#8211; Eng</a></li><li class="page_item page-item-144"><a href="http://lordikc.free.fr/wordpress/?page_id=144" title="Mandriva One USB &#8211; Fra">Mandriva One USB &#8211; Fra</a></li><li class="page_item page-item-461"><a href="http://lordikc.free.fr/wordpress/?page_id=461" title="Mandriva USB Install">Mandriva USB Install</a></li><li class="page_item page-item-385"><a href="http://lordikc.free.fr/wordpress/?page_id=385" title="Liens sponsorisés">Liens sponsorisés</a></li></ul></div>
+			</div><!-- #access -->
+		</div><!-- #masthead -->
+	</div><!-- #header -->
+
+	<div id="main">
+
+		<div id="container">
+			<div id="content" role="main">
+
+
+				<div id="nav-above" class="navigation">
+					<div class="nav-previous"><a href="http://lordikc.free.fr/wordpress/?p=679" rel="prev"><span class="meta-nav">&larr;</span> Un serveur Web securisé sous Mandriva</a></div>
+					<div class="nav-next"><a href="http://lordikc.free.fr/wordpress/?p=701" rel="next">Simple Image Viewer for Linux/X11: Xiv <span class="meta-nav">&rarr;</span></a></div>
+				</div><!-- #nav-above -->
+
+				<div id="post-689" class="post-689 post type-post hentry category-informatique">
+					<h1 class="entry-title">Tag based file system using FUSE</h1>
+
+					<div class="entry-meta">
+						<span class="meta-prep meta-prep-author">Posted on</span> <a href="http://lordikc.free.fr/wordpress/?p=689" title="19:12" rel="bookmark"><span class="entry-date">4 June 2010</span></a> <span class="meta-sep">by</span> <span class="author vcard"><a class="url fn n" href="http://lordikc.free.fr/wordpress/?author=1" title="View all posts by lordikc">lordikc</a></span>					</div><!-- .entry-meta -->
+
+					<div class="entry-content">
+						<p>The usual way of organizing files on disk is based on directories. This prevents one from having the same file in several directory. <a href="/sources/taggedfs-0.3.tgz">TaggedFS</a> provides a new way of organizing your files based on tags.</p>
+<p><span id="more-689"></span></p>
+<h1>Description</h1>
+<p>In TaggedFS each file holds set of tags. Files are accessed through a dynamic tree based on tags. Advantage a file can thus be accessed through many locations depending on the context of use. Drawback is that file names must be uniques and tag based organization is very different from the usual directory based organization.</p>
+<p>Being a file system you can use it through your usual file handling tools (file explorer, samba mounts, command line&#8230;).</p>
+<h1>Motivation</h1>
+<p>Before starting this project, I first had a look at existing implementation. But was not very happy with them. I first tryied to implement it using the MySQL database but it prooved to be not very efficient. In addition, having two different storage system (file system and database) seemed to be very dangerous. So this implementation relies only on the file system and indices you can rebuild out of a single file organisation.<br />
+As a fall back, you can restore all your files from the file system (storage directory).</p>
+<h1>Design</h1>
+<p>Files are stored in the following structure<br />
+<code>dir/files_structure/%02x/%02x/%02x/%02x/%02x/%02x/%02x/%02x/filename</code><br />
+So there is on directory per file which is name after a 64bits id splitted in subpaths MSB is first. In addition,<br />
+<code>dir/files_structure/%02x/%02x/%02x/%02x/%02x/%02x/%02x/%02x/ </code><br />
+contains a file named &#8216;tags&#8217; which contains one tag per line. As you see you can easily retrieve your file if something goes wrong.</p>
+<p>Tags structure is stored in <code>dir/tags_structure/tag/subtags</code></p>
+<p>The current id is stored in dir/id. File file is updated whenever you create a new file.</p>
+<p>Indexes are kept in dir/indexes. Index is based on Key/Value and is splitted into several files spread in directoryes.</p>
+<p>Let say Key is 0xAABBCCDDXX.<br />
+Organisation is:<br />
+/index/AA/BB/CC/idx and idx contains the last byte and value sequentially.</p>
+<p>Searching files having a set of tag can thus be performed recursively through the sub directories of each tag index and limit the amount of data to read.</p>
+<h1>Tag organisation</h1>
+<p>You can create and organize your tags in /tags_structure directory. In this directory, tags are represented by directories. For instance you can create the following tag structure:<br />
+<code>/tags_structure/Family/<br />
+/tags_structure/Family/Mum<br />
+/tags_structure/Family/Dad<br />
+...</code><br />
+In this folder you can rename, move or remove tag the way you would do for directories. Files are updated accordingly. You can&#8217;t create a file in this directory. It is dedicated to tag organization.<br />
+In addition, you can create a new tag in the /tags directory. This new tag will be created with no parent tag.</p>
+<h1>File organisation</h1>
+<p>Files are accessible from the /tags directory. Let say picture.jpg as tag &#8216;Mum&#8217;. The file will be accessible from the following paths:<br />
+<code>/tags/Family<br />
+/tags/Mum<br />
+/tags/Family/Mum</code><br />
+The path like /tags/tag1/tag2/tag3 contains files having:<br />
+<code> tag1 AND tag2 AND tag3</code><br />
+If tag21 and tag22 are subtags of tag2. Then the same path contains files having:<br />
+<code>tag1 AND (tag2 OR tag21 OR tag22) AND tag3.</code></p>
+<h1>Creating a file</h1>
+<p>You create files in the /tags directory. Be aware that filename must be unique on the whole file system and can&#8217;t have the same name as a tag. If you create a file in /tags/tag1/tag2/tag3. The files will hold tags tag1,tag2 and tag3 after creation.</p>
+<h1>Setting tags to a file</h1>
+<p>Move the file to the path containing all the tags you want. This will removes<br />
+all the tags from the file and set the new ones.</p>
+<h1>Remove a tag from a file</h1>
+<p>Unfortunately, they is no way of removing a tag. You must move the file as described above and set the whole set of tags.</p>
+<h1>Add a tag to a file</h1>
+<p>Move the file from it&#8217;s current location in /tags to /tags_structure/the_tag_you_want_to_add. The file won&#8217;t be moved but the tag will be added.</p>
+<h1>Reading a file&#8217;s tags</h1>
+<p>Along each file, there&#8217;s an hidden file containing the tags of a file you can read. Just append &#8220;.tag&#8221; to the filename.<br />
+Example:<br />
+<code># cat /tags/Mum/picture.jpg.tag</code><br />
+returns<br />
+<code>Mum</code></p>
+<h1>What you can&#8217;t do with taggedfs</h1>
+<p>Be aware that since /tags structure is dynamic you can&#8217;t perform recursive operations on it. This directory contains all the possible combinaison of tags and the combinatory can be huge.<br />
+For instance you <strong>can&#8217;t</strong> do:<br />
+<code>- find /tags -name "picture.jpg" -print<br />
+- rm -rf /tags/*<br />
+- tar cvf tags.tgz /tags/*</code><br />
+&#8230;</p>
+<h1>Perfom backup and restore</h1>
+<p>In order to backup your data stored in taggedfs you should backup the storage directory including the &#8216;id&#8217; file. The indexes directory is optionnal since you can rebuild it.<br />
+Restore the storage directory and rebuild indexes.</p>
+											</div><!-- .entry-content -->
+
+
+					<div class="entry-utility">
+						This entry was posted in <a href="http://lordikc.free.fr/wordpress/?cat=2" title="View all posts in Informatique" rel="category">Informatique</a>. Bookmark the <a href="http://lordikc.free.fr/wordpress/?p=689" title="Permalink to Tag based file system using FUSE" rel="bookmark">permalink</a>.											</div><!-- .entry-utility -->
+				</div><!-- #post-## -->
+
+				<div id="nav-below" class="navigation">
+					<div class="nav-previous"><a href="http://lordikc.free.fr/wordpress/?p=679" rel="prev"><span class="meta-nav">&larr;</span> Un serveur Web securisé sous Mandriva</a></div>
+					<div class="nav-next"><a href="http://lordikc.free.fr/wordpress/?p=701" rel="next">Simple Image Viewer for Linux/X11: Xiv <span class="meta-nav">&rarr;</span></a></div>
+				</div><!-- #nav-below -->
+
+				
+			<div id="comments">
+
+
+			<h3 id="comments-title">10 Responses to <em>Tag based file system using FUSE</em></h3>
+
+
+			<ol class="commentlist">
+					<li class="comment even thread-even depth-1" id="li-comment-1579">
+		<div id="comment-1579">
+		<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/b81a0e9fa619c5afe2c19ab9ac52472a?s=40&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&amp;r=G' class='avatar avatar-40 photo' height='40' width='40' />			<cite class="fn">Marco P</cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://lordikc.free.fr/wordpress/?p=689&#038;cpage=1#comment-1579">
+			14 August 2010 at 15:21</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>Thank you! It was exactly what I was looking for during the last week&#8230; Consider that I was almost going to switch from gnome to kde only because of dolphin tagging features (via nepomuk)!</p>
+<p>Your solution has the great advantage of being portable and desktop environment indipendent. Last Saturday I spent the whole day in the developing of something very similar to TaggedFS but using hard links and a deamonized bash code (I should study the fuse libraries&#8230;): I gave up because it was very very slow!</p>
+<p>Byez!</p>
+</div>
+
+		<div class="reply">
+					</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	</li>
+	<li class="post pingback">
+		<p>Pingback: <a href='http://linux.goesZen.com/tagfs-tracking-progress-in-the-field-of-semantic-file-systems.html' rel='external nofollow' class='url'>TagFS, tracking progress in the field of semantic file systems | Zen of Linux</a></p>
+	</li>
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1592">
+		<div id="comment-1592">
+		<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/831fb46f0f56f709360bef14f99a67ea?s=40&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&amp;r=G' class='avatar avatar-40 photo' height='40' width='40' />			<cite class="fn">amir beygi</cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://lordikc.free.fr/wordpress/?p=689&#038;cpage=1#comment-1592">
+			11 December 2010 at 14:22</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>Hi<br />
+i can&#8217;t start using this lovely application . and after<br />
+#taggedfs /mydir/<br />
+i can&#8217;t access my mydir anymore and got this error message<br />
+cd: _tag: Transport endpoint is not connected</p>
+</div>
+
+		<div class="reply">
+					</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	</li>
+	<li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1" id="li-comment-1593">
+		<div id="comment-1593">
+		<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/f581407adeaa3609579f01ec819ca9b0?s=40&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&amp;r=G' class='avatar avatar-40 photo' height='40' width='40' />			<cite class="fn"><a href='http://www.lordikc.com/' rel='external nofollow' class='url'>lordikc</a></cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://lordikc.free.fr/wordpress/?p=689&#038;cpage=1#comment-1593">
+			11 December 2010 at 17:25</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>Hi,</p>
+<p>You lack the -o dir=/xxx option. See README and usage.<br />
+Command is :<br />
+taggedfs /mount_point -o dir=/storage_dir</p>
+<p>Regards,</p>
+<p>Lordikc</p>
+</div>
+
+		<div class="reply">
+					</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	</li>
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1594">
+		<div id="comment-1594">
+		<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/831fb46f0f56f709360bef14f99a67ea?s=40&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&amp;r=G' class='avatar avatar-40 photo' height='40' width='40' />			<cite class="fn">amir beygi</cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://lordikc.free.fr/wordpress/?p=689&#038;cpage=1#comment-1594">
+			11 December 2010 at 18:07</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>thank for your response<br />
+now i am unable to make my test directory in tags_structure<br />
+root@amir-laptop:/x/ttag/m# cd<br />
+remove_tag/     tags/           tags_structure/<br />
+root@amir-laptop:/x/ttag/m# cd tags_structure/<br />
+root@amir-laptop:/x/ttag/m/tags_structure# mkdir Test<br />
+mkdir: cannot create directory `Test&#8217;: No such file or directory<br />
+root@amir-laptop:/x/ttag/m/tags_structure#</p>
+</div>
+
+		<div class="reply">
+					</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	</li>
+	<li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1" id="li-comment-1595">
+		<div id="comment-1595">
+		<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/f581407adeaa3609579f01ec819ca9b0?s=40&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&amp;r=G' class='avatar avatar-40 photo' height='40' width='40' />			<cite class="fn"><a href='http://www.lordikc.com/' rel='external nofollow' class='url'>lordikc</a></cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://lordikc.free.fr/wordpress/?p=689&#038;cpage=1#comment-1595">
+			12 December 2010 at 2:50</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>Well I&#8217;ve just tryied it myself and it works</p>
+<p>[lordikc@home ~]$ mkdir /tmp/tagstore<br />
+[lordikc@home ~]$ mkdir ~/mnt<br />
+[lordikc@home ~]$ taggedfs ~/mnt -o dir=/tmp/tagstore<br />
+[lordikc@home ~]$ cd ~/mnt/tags_structure/<br />
+[lordikc@home tags_structure]$ mkdir Test<br />
+[lordikc@home tags_structure]$ ls<br />
+Test/<br />
+[lordikc@home tags_structure]$ cd<br />
+[lordikc@home ~]$ fusermount -u ~/mnt</p>
+<p>I guest you lack access rights somewhere.</p>
+</div>
+
+		<div class="reply">
+					</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	</li>
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1596">
+		<div id="comment-1596">
+		<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/831fb46f0f56f709360bef14f99a67ea?s=40&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&amp;r=G' class='avatar avatar-40 photo' height='40' width='40' />			<cite class="fn">amir beygi</cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://lordikc.free.fr/wordpress/?p=689&#038;cpage=1#comment-1596">
+			12 December 2010 at 4:27</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>hi<br />
+my problem was<br />
+taggedfs ~/mnt/ -o dir=/tmp/tagstore/<br />
+instead of<br />
+taggedfs ~/mnt -o dir=/tmp/tagstore</p>
+<p>i have some idea on tagfs, could you please send an email me in private..</p>
+</div>
+
+		<div class="reply">
+					</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	</li>
+	<li class="comment even thread-even depth-1" id="li-comment-1597">
+		<div id="comment-1597">
+		<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/831fb46f0f56f709360bef14f99a67ea?s=40&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&amp;r=G' class='avatar avatar-40 photo' height='40' width='40' />			<cite class="fn">amir beygi</cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://lordikc.free.fr/wordpress/?p=689&#038;cpage=1#comment-1597">
+			12 December 2010 at 11:42</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>Another question, do you know any upgrade for nautilus? i am using your software to manage my huge amount of movie/ebook/picture/documents [about 3TeraByte]</p>
+</div>
+
+		<div class="reply">
+					</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	</li>
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1598">
+		<div id="comment-1598">
+		<div class="comment-author vcard">
+			<img alt='' src='http://0.gravatar.com/avatar/831fb46f0f56f709360bef14f99a67ea?s=40&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&amp;r=G' class='avatar avatar-40 photo' height='40' width='40' />			<cite class="fn">amir beygi</cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://lordikc.free.fr/wordpress/?p=689&#038;cpage=1#comment-1598">
+			13 December 2010 at 12:33</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>Hi again<br />
+Are you working on this project to improve it?<br />
+I started the pilot system , and i thing it would be nice if had these more feature:</p>
+<p>1. placing a !! before a tag directory to find files that have not this tag, for example when i am in a folder and tagging my files, it may i forget that does the family_mom.jpg file is located in /mom/ tag or not so i can do /!!mom/ to find files without mom tag. </p>
+<p>2. when i am in a folder /a/b//d/<br />
+when i move my file from location /a/b/ to e/ folder, it will remove [d] tag and add [e] tag, NOT GOOD</p>
+<p>3. when you open -&gt;edit-&gt;save your file from a parent tag, it will be removed from child tag. NOT GOOD</p>
+<p>4. it would be good to handle duplicate file names,</p>
+<p>5. it would be good[but very hard] to store your tag information in file&#8217;s same folders, so i would not change my directory structure, and even add a tag to my folder, for example add [picture][personal] tag to my /personal/picture/ folder and all files accept [picture][personal]  tag automatically.</p>
+</div>
+
+		<div class="reply">
+					</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	</li>
+	<li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1" id="li-comment-1599">
+		<div id="comment-1599">
+		<div class="comment-author vcard">
+			<img alt='' src='http://1.gravatar.com/avatar/f581407adeaa3609579f01ec819ca9b0?s=40&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&amp;r=G' class='avatar avatar-40 photo' height='40' width='40' />			<cite class="fn"><a href='http://www.lordikc.com/' rel='external nofollow' class='url'>lordikc</a></cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://lordikc.free.fr/wordpress/?p=689&#038;cpage=1#comment-1599">
+			13 December 2010 at 18:52</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>Sorry,</p>
+<p>I no don&#8217;t work activelly on this project. It was a proof of concept. But you can download the source code and work on it.</p>
+<p>Regards,</p>
+<p>Lordikc</p>
+</div>
+
+		<div class="reply">
+					</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	</li>
+			</ol>
+
+
+
+								
+</div><!-- #comments -->
+
+
+			</div><!-- #content -->
+		</div><!-- #container -->
+
+
+		<div id="primary" class="widget-area" role="complementary">
+			<ul class="xoxo">
+
+<li id="text-386131743" class="widget-container widget_text"><h3 class="widget-title">Smartcode</h3>			<div class="textwidget"><img src="/images/url_lordikc.png" /></div>
+		</li><li id="text-386131746" class="widget-container widget_text"><h3 class="widget-title">Facebook</h3>			<div class="textwidget"><div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-like" data-href="http://lordikc.free.fr/wordpress" data-send="true" data-width="450" data-show-faces="true"></div></div>
+		</li><li id="categories-2" class="widget-container widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-100"><a href="http://lordikc.free.fr/wordpress/?cat=100" title="View all posts filed under Android">Android</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://lordikc.free.fr/wordpress/?cat=7" title="View all posts filed under EEE PC">EEE PC</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://lordikc.free.fr/wordpress/?cat=4" title="View all posts filed under Electronique">Electronique</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://lordikc.free.fr/wordpress/?cat=6" title="View all posts filed under Graphismes">Graphismes</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="http://lordikc.free.fr/wordpress/?cat=2" title="View all posts filed under Informatique">Informatique</a>
+</li>
+	<li class="cat-item cat-item-84"><a href="http://lordikc.free.fr/wordpress/?cat=84" title="View all posts filed under Internet">Internet</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://lordikc.free.fr/wordpress/?cat=123" title="View all posts filed under Linux">Linux</a>
+</li>
+	<li class="cat-item cat-item-72"><a href="http://lordikc.free.fr/wordpress/?cat=72" title="View all posts filed under lxde">lxde</a>
+</li>
+	<li class="cat-item cat-item-113"><a href="http://lordikc.free.fr/wordpress/?cat=113" title="View all posts filed under Mageia">Mageia</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://lordikc.free.fr/wordpress/?cat=11" title="View all posts filed under mandriva">mandriva</a>
+</li>
+	<li class="cat-item cat-item-39"><a href="http://lordikc.free.fr/wordpress/?cat=39" title="View all posts filed under Mandriva One USB">Mandriva One USB</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://lordikc.free.fr/wordpress/?cat=23" title="View all posts filed under mini-itx">mini-itx</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://lordikc.free.fr/wordpress/?cat=121" title="View all posts filed under Mobile Phone">Mobile Phone</a>
+</li>
+	<li class="cat-item cat-item-101"><a href="http://lordikc.free.fr/wordpress/?cat=101" title="View all posts filed under multimedia">multimedia</a>
+</li>
+	<li class="cat-item cat-item-110"><a href="http://lordikc.free.fr/wordpress/?cat=110" title="View all posts filed under NetBook">NetBook</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://lordikc.free.fr/wordpress/?cat=1" title="View all posts filed under Non classé">Non classé</a>
+</li>
+	<li class="cat-item cat-item-112"><a href="http://lordikc.free.fr/wordpress/?cat=112" title="View all posts filed under Randonnée">Randonnée</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://lordikc.free.fr/wordpress/?cat=95" title="View all posts filed under sécurité">sécurité</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://lordikc.free.fr/wordpress/?cat=5" title="Données géographiques et outils pour les manipuler.">SIG</a>
+</li>
+		</ul>
+</li><li id="tag_cloud-3" class="widget-container widget_tag_cloud"><h3 class="widget-title">Tags</h3><div><a href='http://lordikc.free.fr/wordpress/?tag=10go' class='tag-link-22' title='1 topic' style='font-size: 8pt;'>10Go</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=16f628' class='tag-link-69' title='2 topics' style='font-size: 10.470588235294pt;'>16f628</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=20081' class='tag-link-12' title='4 topics' style='font-size: 13.490196078431pt;'>2008.1</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=2009' class='tag-link-26' title='4 topics' style='font-size: 13.490196078431pt;'>2009</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=accent' class='tag-link-33' title='1 topic' style='font-size: 8pt;'>accent</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=ajouter-un-tag' class='tag-link-62' title='3 topics' style='font-size: 12.117647058824pt;'>Ajouter un tag</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=asus' class='tag-link-36' title='1 topic' style='font-size: 8pt;'>asus</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=atom' class='tag-link-9' title='3 topics' style='font-size: 12.117647058824pt;'>atom</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=boitier' class='tag-link-40' title='2 topics' style='font-size: 10.470588235294pt;'>boitier</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=bootable' class='tag-link-28' title='4 topics' style='font-size: 13.490196078431pt;'>bootable</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=bruit' class='tag-link-14' title='1 topic' style='font-size: 8pt;'>bruit</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=cinergy' class='tag-link-17' title='1 topic' style='font-size: 8pt;'>cinergy</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=compatibilite' class='tag-link-37' title='1 topic' style='font-size: 8pt;'>compatibilité</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=configuration' class='tag-link-35' title='2 topics' style='font-size: 10.470588235294pt;'>configuration</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=connexion' class='tag-link-29' title='1 topic' style='font-size: 8pt;'>connexion</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=eee-pc' class='tag-link-7' title='7 topics' style='font-size: 16.235294117647pt;'>EEE PC</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=francais' class='tag-link-34' title='1 topic' style='font-size: 8pt;'>français</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=freefr' class='tag-link-21' title='1 topic' style='font-size: 8pt;'>free.fr</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=fuse' class='tag-link-43' title='2 topics' style='font-size: 10.470588235294pt;'>fuse</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=home-cinema' class='tag-link-24' title='6 topics' style='font-size: 15.549019607843pt;'>home-cinema</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=intel' class='tag-link-8' title='2 topics' style='font-size: 10.470588235294pt;'>intel</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=java' class='tag-link-52' title='3 topics' style='font-size: 12.117647058824pt;'>java</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=kde-41' class='tag-link-27' title='4 topics' style='font-size: 13.490196078431pt;'>kde 4.1</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=linux' class='tag-link-10' title='19 topics' style='font-size: 21.725490196078pt;'>linux</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=lirc' class='tag-link-19' title='1 topic' style='font-size: 8pt;'>lirc</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=lxde' class='tag-link-72' title='3 topics' style='font-size: 12.117647058824pt;'>lxde</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=mandriva' class='tag-link-11' title='20 topics' style='font-size: 22pt;'>mandriva</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=mini-itx' class='tag-link-23' title='4 topics' style='font-size: 13.490196078431pt;'>mini-itx</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=mot-de-passe' class='tag-link-31' title='1 topic' style='font-size: 8pt;'>mot de passe</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=multimedia' class='tag-link-66' title='6 topics' style='font-size: 15.549019607843pt;'>multimédia</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=netbook' class='tag-link-81' title='3 topics' style='font-size: 12.117647058824pt;'>netbook</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=performance' class='tag-link-20' title='2 topics' style='font-size: 10.470588235294pt;'>performance</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=pic' class='tag-link-68' title='2 topics' style='font-size: 10.470588235294pt;'>pic</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=raid' class='tag-link-42' title='2 topics' style='font-size: 10.470588235294pt;'>raid</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=securite' class='tag-link-95' title='2 topics' style='font-size: 10.470588235294pt;'>sécurité</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=samba' class='tag-link-32' title='1 topic' style='font-size: 8pt;'>samba</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=sans-os' class='tag-link-109' title='2 topics' style='font-size: 10.470588235294pt;'>sans os</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=son' class='tag-link-57' title='2 topics' style='font-size: 10.470588235294pt;'>son</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=ssh' class='tag-link-30' title='3 topics' style='font-size: 12.117647058824pt;'>ssh</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=telecommande' class='tag-link-18' title='1 topic' style='font-size: 8pt;'>télécommande</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=terratec' class='tag-link-16' title='2 topics' style='font-size: 10.470588235294pt;'>terratec</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=tnt' class='tag-link-15' title='2 topics' style='font-size: 10.470588235294pt;'>tnt</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=usb' class='tag-link-25' title='8 topics' style='font-size: 16.921568627451pt;'>usb</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=ventilateur' class='tag-link-13' title='2 topics' style='font-size: 10.470588235294pt;'>ventilateur</a>
+<a href='http://lordikc.free.fr/wordpress/?tag=video' class='tag-link-73' title='2 topics' style='font-size: 10.470588235294pt;'>video</a></div>
+</li><li id="search-3" class="widget-container widget_search"><h3 class="widget-title">Search</h3><form role="search" method="get" id="searchform" action="http://lordikc.free.fr/wordpress/" >
+	<div><label class="screen-reader-text" for="s">Search for:</label>
+	<input type="text" value="" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="Search" />
+	</div>
+	</form></li><li id="meta-3" class="widget-container widget_meta"><h3 class="widget-title">Meta</h3>			<ul>
+						<li><a href="http://lordikc.free.fr/wordpress/wp-login.php">Log in</a></li>
+			<li><a href="http://lordikc.free.fr/wordpress/?feed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://lordikc.free.fr/wordpress/?feed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>
+						</ul>
+</li><li id="text-386131742" class="widget-container widget_text"><h3 class="widget-title">Stat</h3>			<div class="textwidget"><!-- phpmyvisites -->
+<a href="http://st.free.fr/" title="phpMyVisites | Open source web analytics"
+onclick="window.open(this.href);return(false);"><script type="text/javascript">
+<!--
+var a_vars = Array();
+var pagename = document.title;
+
+var phpmyvisitesSite = 32498;
+var phpmyvisitesURL = "http://st.free.fr/phpmyvisites.php";
+//-->
+</script>
+<script language="javascript" src="http://st.free.fr/phpmyvisites.js" type="text/javascript"></script>
+<object><noscript><p>phpMyVisites | Open source web analytics
+<img src="http://st.free.fr/phpmyvisites.php" alt="Statistics" style="border:0" />
+</p></noscript></object></a>
+<!-- /phpmyvisites -->
+</div>
+		</li><li id="text-386131744" class="widget-container widget_text"><h3 class="widget-title">Found something useful ?</h3>			<div class="textwidget"><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG_global.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
+<img alt="" border="0" src="https://www.paypal.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+</form>
+</div>
+		</li><li id="text-210586221" class="widget-container widget_text"><h3 class="widget-title">Libérez vous</h3>			<div class="textwidget"><a href="http://soutenir.framasoft.org/?pseudo=lordikc&web=http%3A%2F%2Fwww.lordikc.com" title="Je soutiens Framasoft, pourquoi pas vous ?"><img src="http://soutenir.framasoft.org/files/bannieres/2010/Gee_badge-1000_10_1_couleurs_cc-by-sa_180par240.jpg" alt="Soutenir Framasoft"/></a>
+</div>
+		</li>			</ul>
+		</div><!-- #primary .widget-area -->
+
+
+		<div id="secondary" class="widget-area" role="complementary">
+			<ul class="xoxo">
+				<li id="text-386131745" class="widget-container widget_text"><h3 class="widget-title">Copyright</h3>			<div class="textwidget"><center><a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Contrat Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type">Blog L'Ordikc</span> de <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.lordikc.com" property="cc:attributionName" rel="cc:attributionURL">L'Ordikc</a> est mis à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">licence Creative Commons Paternité 3.0 Unported</a>.<br />Basé(e) sur une oeuvre à <a xmlns:dct="http://purl.org/dc/terms/" href="http://www.lordikc.com" rel="dct:source">www.lordikc.com</a>.</center>
+</div>
+		</li>			</ul>
+		</div><!-- #secondary .widget-area -->
+
+	</div><!-- #main -->
+
+	<div id="footer" role="contentinfo">
+		<div id="colophon">
+
+
+
+			<div id="site-info">
+				<a href="http://lordikc.free.fr/wordpress/" title="Blog L&#8217;Ordikc" rel="home">
+					Blog L&#8217;Ordikc				</a>
+			</div><!-- #site-info -->
+
+			<div id="site-generator">
+								<a href="http://wordpress.org/"
+						title="Semantic Personal Publishing Platform" rel="generator">
+					Proudly powered by WordPress.				</a>
+			</div><!-- #site-generator -->
+
+		</div><!-- #colophon -->
+	</div><!-- #footer -->
+
+</div><!-- #wrapper -->
+
+
+</body>
+</html>
